@@ -12,16 +12,26 @@ import javax.annotation.Nullable;
 public class SimpleBooleanObservable extends AbstractObservable<Boolean> implements
     BooleanObservable {
 
+  private final boolean fallbackValue;
+
+  public SimpleBooleanObservable(
+      @Nullable ValidationListener<Boolean> validationListener, Boolean value,
+      boolean fallbackValue) {
+    super(validationListener, value);
+    this.fallbackValue = fallbackValue;
+  }
+
   public SimpleBooleanObservable(
       @Nullable ValidationListener<Boolean> validationListener, Boolean value) {
-    super(validationListener, value);
+    this(validationListener, value, false);
   }
 
   public SimpleBooleanObservable(Boolean value) {
-    super(value);
+    this(null, value);
   }
 
   public SimpleBooleanObservable() {
+    this(null);
   }
 
   /**
@@ -32,7 +42,7 @@ public class SimpleBooleanObservable extends AbstractObservable<Boolean> impleme
     Boolean value = this.get();
 
     if (value == null) {
-      return false;
+      return this.fallbackValue;
     }
 
     return value;

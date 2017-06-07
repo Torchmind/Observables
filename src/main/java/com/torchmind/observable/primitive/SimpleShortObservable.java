@@ -11,16 +11,25 @@ import javax.annotation.Nullable;
  */
 public class SimpleShortObservable extends AbstractObservable<Short> implements ShortObservable {
 
+  private final short fallbackValue;
+
+  public SimpleShortObservable(
+      @Nullable ValidationListener<Short> validationListener, Short value, short fallbackValue) {
+    super(validationListener, value);
+    this.fallbackValue = fallbackValue;
+  }
+
   public SimpleShortObservable(
       @Nullable ValidationListener<Short> validationListener, Short value) {
-    super(validationListener, value);
+    this(validationListener, value, (short) 0);
   }
 
   public SimpleShortObservable(Short value) {
-    super(value);
+    this(null, value);
   }
 
   public SimpleShortObservable() {
+    this(null);
   }
 
   /**
@@ -31,7 +40,7 @@ public class SimpleShortObservable extends AbstractObservable<Short> implements 
     Short value = this.get();
 
     if (value == null) {
-      return 0;
+      return this.fallbackValue;
     }
 
     return value;

@@ -11,16 +11,25 @@ import javax.annotation.Nullable;
  */
 public class SimpleByteObservable extends AbstractObservable<Byte> implements ByteObservable {
 
+  private final byte fallbackValue;
+
+  public SimpleByteObservable(
+      @Nullable ValidationListener<Byte> validationListener, Byte value, byte fallbackValue) {
+    super(validationListener, value);
+    this.fallbackValue = fallbackValue;
+  }
+
   public SimpleByteObservable(
       @Nullable ValidationListener<Byte> validationListener, Byte value) {
-    super(validationListener, value);
+    this(validationListener, value, (byte) 0);
   }
 
   public SimpleByteObservable(Byte value) {
-    super(value);
+    this(null, value);
   }
 
   public SimpleByteObservable() {
+    this(null, null);
   }
 
   /**
@@ -31,7 +40,7 @@ public class SimpleByteObservable extends AbstractObservable<Byte> implements By
     Byte value = this.get();
 
     if (value == null) {
-      return 0;
+      return this.fallbackValue;
     }
 
     return value;

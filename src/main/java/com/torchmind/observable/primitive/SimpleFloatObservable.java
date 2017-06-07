@@ -11,16 +11,25 @@ import javax.annotation.Nullable;
  */
 public class SimpleFloatObservable extends AbstractObservable<Float> implements FloatObservable {
 
+  private final float fallbackValue;
+
+  public SimpleFloatObservable(
+      @Nullable ValidationListener<Float> validationListener, Float value, float fallbackValue) {
+    super(validationListener, value);
+    this.fallbackValue = fallbackValue;
+  }
+
   public SimpleFloatObservable(
       @Nullable ValidationListener<Float> validationListener, Float value) {
-    super(validationListener, value);
+    this(validationListener, value, 0);
   }
 
   public SimpleFloatObservable(Float value) {
-    super(value);
+    this(null, value);
   }
 
   public SimpleFloatObservable() {
+    this(null);
   }
 
   /**
@@ -31,7 +40,7 @@ public class SimpleFloatObservable extends AbstractObservable<Float> implements 
     Float value = this.get();
 
     if (value == null) {
-      return 0;
+      return this.fallbackValue;
     }
 
     return value;

@@ -11,16 +11,25 @@ import javax.annotation.Nullable;
  */
 public class SimpleDoubleObservable extends AbstractObservable<Double> implements DoubleObservable {
 
+  private final double fallbackValue;
+
+  public SimpleDoubleObservable(
+      @Nullable ValidationListener<Double> validationListener, Double value, double fallbackValue) {
+    super(validationListener, value);
+    this.fallbackValue = fallbackValue;
+  }
+
   public SimpleDoubleObservable(
       @Nullable ValidationListener<Double> validationListener, Double value) {
-    super(validationListener, value);
+    this(validationListener, value, 0);
   }
 
   public SimpleDoubleObservable(Double value) {
-    super(value);
+    this(null, value);
   }
 
   public SimpleDoubleObservable() {
+    this(null, null);
   }
 
   /**
@@ -31,7 +40,7 @@ public class SimpleDoubleObservable extends AbstractObservable<Double> implement
     Double value = this.get();
 
     if (value == null) {
-      return 0;
+      return this.fallbackValue;
     }
 
     return value;

@@ -12,16 +12,26 @@ import javax.annotation.Nullable;
 public class SimpleCharacterObservable extends AbstractObservable<Character> implements
     CharacterObservable {
 
+  private final char fallbackValue;
+
+  public SimpleCharacterObservable(
+      @Nullable ValidationListener<Character> validationListener, Character value,
+      char fallbackValue) {
+    super(validationListener, value);
+    this.fallbackValue = fallbackValue;
+  }
+
   public SimpleCharacterObservable(
       @Nullable ValidationListener<Character> validationListener, Character value) {
-    super(validationListener, value);
+    this(validationListener, value, (char) 0);
   }
 
   public SimpleCharacterObservable(Character value) {
-    super(value);
+    this(null, value);
   }
 
   public SimpleCharacterObservable() {
+    this(null, null);
   }
 
   /**
@@ -32,7 +42,7 @@ public class SimpleCharacterObservable extends AbstractObservable<Character> imp
     Character value = this.get();
 
     if (value == null) {
-      return 0;
+      return this.fallbackValue;
     }
 
     return value;

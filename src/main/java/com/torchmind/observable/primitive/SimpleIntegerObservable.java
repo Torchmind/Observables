@@ -12,16 +12,25 @@ import javax.annotation.Nullable;
 public class SimpleIntegerObservable extends AbstractObservable<Integer> implements
     IntegerObservable {
 
+  private final int fallbackValue;
+
+  public SimpleIntegerObservable(
+      @Nullable ValidationListener<Integer> validationListener, Integer value, int fallbackValue) {
+    super(validationListener, value);
+    this.fallbackValue = fallbackValue;
+  }
+
   public SimpleIntegerObservable(
       @Nullable ValidationListener<Integer> validationListener, Integer value) {
-    super(validationListener, value);
+    this(validationListener, value, 0);
   }
 
   public SimpleIntegerObservable(Integer value) {
-    super(value);
+    this(null, value);
   }
 
   public SimpleIntegerObservable() {
+    this(null);
   }
 
   /**
@@ -32,7 +41,7 @@ public class SimpleIntegerObservable extends AbstractObservable<Integer> impleme
     Integer value = this.get();
 
     if (value == null) {
-      return 0;
+      return this.fallbackValue;
     }
 
     return value;
