@@ -261,6 +261,274 @@ public class SimpleObservableTest {
   }
 
   /**
+   * Evaluates whether multiple (e.g. three or more) bidirectional bindings behave as expected.
+   */
+  @Test
+  public void testMultiBidirectionalBinding() {
+    SimpleObservable<String> observable1 = new SimpleObservable<>(null, "Initial1");
+    SimpleObservable<String> observable2 = new SimpleObservable<>(null, "Initial2");
+    SimpleObservable<String> observable3 = new SimpleObservable<>(null, "Initial3");
+    SimpleObservable<String> observable4 = new SimpleObservable<>(null, "Initial4");
+
+    {
+      Assert.assertEquals("Initial1", observable1.get());
+      Assert.assertFalse(observable1.isBound());
+      Assert.assertFalse(observable1.isBoundBidirectionally());
+      Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable3));
+      Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Initial2", observable2.get());
+      Assert.assertFalse(observable2.isBound());
+      Assert.assertFalse(observable2.isBoundBidirectionally());
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable3));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Initial3", observable3.get());
+      Assert.assertFalse(observable3.isBound());
+      Assert.assertFalse(observable3.isBoundBidirectionally());
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Initial4", observable4.get());
+      Assert.assertFalse(observable4.isBound());
+      Assert.assertFalse(observable4.isBoundBidirectionally());
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable3));
+    }
+
+    observable2.bindBidirectionallyTo(observable1);
+    observable3.bindBidirectionallyTo(observable1);
+    observable4.bindBidirectionallyTo(observable1);
+
+    {
+      Assert.assertEquals("Initial1", observable1.get());
+      Assert.assertTrue(observable1.isBound());
+      Assert.assertTrue(observable1.isBoundBidirectionally());
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable2));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable3));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Initial1", observable2.get());
+      Assert.assertTrue(observable2.isBound());
+      Assert.assertTrue(observable2.isBoundBidirectionally());
+      Assert.assertTrue(observable2.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable3));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Initial1", observable3.get());
+      Assert.assertTrue(observable3.isBound());
+      Assert.assertTrue(observable3.isBoundBidirectionally());
+      Assert.assertTrue(observable3.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Initial1", observable4.get());
+      Assert.assertTrue(observable4.isBound());
+      Assert.assertTrue(observable4.isBoundBidirectionally());
+      Assert.assertTrue(observable4.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable3));
+    }
+
+    observable1.set("Test1");
+
+    {
+      Assert.assertEquals("Test1", observable1.get());
+      Assert.assertTrue(observable1.isBound());
+      Assert.assertTrue(observable1.isBoundBidirectionally());
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable2));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable3));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test1", observable2.get());
+      Assert.assertTrue(observable2.isBound());
+      Assert.assertTrue(observable2.isBoundBidirectionally());
+      Assert.assertTrue(observable2.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable3));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test1", observable3.get());
+      Assert.assertTrue(observable3.isBound());
+      Assert.assertTrue(observable3.isBoundBidirectionally());
+      Assert.assertTrue(observable3.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test1", observable4.get());
+      Assert.assertTrue(observable4.isBound());
+      Assert.assertTrue(observable4.isBoundBidirectionally());
+      Assert.assertTrue(observable4.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable3));
+    }
+
+    observable2.set("Test2");
+
+    {
+      Assert.assertEquals("Test2", observable1.get());
+      Assert.assertTrue(observable1.isBound());
+      Assert.assertTrue(observable1.isBoundBidirectionally());
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable2));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable3));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test2", observable2.get());
+      Assert.assertTrue(observable2.isBound());
+      Assert.assertTrue(observable2.isBoundBidirectionally());
+      Assert.assertTrue(observable2.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable3));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test2", observable3.get());
+      Assert.assertTrue(observable3.isBound());
+      Assert.assertTrue(observable3.isBoundBidirectionally());
+      Assert.assertTrue(observable3.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test2", observable4.get());
+      Assert.assertTrue(observable4.isBound());
+      Assert.assertTrue(observable4.isBoundBidirectionally());
+      Assert.assertTrue(observable4.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable3));
+    }
+
+    observable3.set("Test3");
+
+    {
+      Assert.assertEquals("Test3", observable1.get());
+      Assert.assertTrue(observable1.isBound());
+      Assert.assertTrue(observable1.isBoundBidirectionally());
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable2));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable3));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test3", observable2.get());
+      Assert.assertTrue(observable2.isBound());
+      Assert.assertTrue(observable2.isBoundBidirectionally());
+      Assert.assertTrue(observable2.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable3));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test3", observable3.get());
+      Assert.assertTrue(observable3.isBound());
+      Assert.assertTrue(observable3.isBoundBidirectionally());
+      Assert.assertTrue(observable3.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test3", observable4.get());
+      Assert.assertTrue(observable4.isBound());
+      Assert.assertTrue(observable4.isBoundBidirectionally());
+      Assert.assertTrue(observable4.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable3));
+    }
+
+    observable3.set("Test4");
+
+    {
+      Assert.assertEquals("Test4", observable1.get());
+      Assert.assertTrue(observable1.isBound());
+      Assert.assertTrue(observable1.isBoundBidirectionally());
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable2));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable3));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test4", observable2.get());
+      Assert.assertTrue(observable2.isBound());
+      Assert.assertTrue(observable2.isBoundBidirectionally());
+      Assert.assertTrue(observable2.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable3));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test4", observable3.get());
+      Assert.assertTrue(observable3.isBound());
+      Assert.assertTrue(observable3.isBoundBidirectionally());
+      Assert.assertTrue(observable3.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test4", observable4.get());
+      Assert.assertTrue(observable4.isBound());
+      Assert.assertTrue(observable4.isBoundBidirectionally());
+      Assert.assertTrue(observable4.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable3));
+    }
+
+    observable1.unbindBidirectional(observable2);
+    observable2.set("Test5");
+
+    {
+      Assert.assertEquals("Test4", observable1.get());
+      Assert.assertTrue(observable1.isBound());
+      Assert.assertTrue(observable1.isBoundBidirectionally());
+      Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable2));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable3));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test5", observable2.get());
+      Assert.assertFalse(observable2.isBound());
+      Assert.assertFalse(observable2.isBoundBidirectionally());
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable3));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test4", observable3.get());
+      Assert.assertTrue(observable3.isBound());
+      Assert.assertTrue(observable3.isBoundBidirectionally());
+      Assert.assertTrue(observable3.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test4", observable4.get());
+      Assert.assertTrue(observable4.isBound());
+      Assert.assertTrue(observable4.isBoundBidirectionally());
+      Assert.assertTrue(observable4.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable3));
+    }
+
+    observable1.set("Test6");
+
+    {
+      Assert.assertEquals("Test6", observable1.get());
+      Assert.assertTrue(observable1.isBound());
+      Assert.assertTrue(observable1.isBoundBidirectionally());
+      Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable2));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable3));
+      Assert.assertTrue(observable1.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test5", observable2.get());
+      Assert.assertFalse(observable2.isBound());
+      Assert.assertFalse(observable2.isBoundBidirectionally());
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable3));
+      Assert.assertFalse(observable2.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test6", observable3.get());
+      Assert.assertTrue(observable3.isBound());
+      Assert.assertTrue(observable3.isBoundBidirectionally());
+      Assert.assertTrue(observable3.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable3.isBoundBidirectionallyTo(observable4));
+
+      Assert.assertEquals("Test6", observable4.get());
+      Assert.assertTrue(observable4.isBound());
+      Assert.assertTrue(observable4.isBoundBidirectionally());
+      Assert.assertTrue(observable4.isBoundBidirectionallyTo(observable1));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable2));
+      Assert.assertFalse(observable4.isBoundBidirectionallyTo(observable3));
+    }
+  }
+
+  /**
    * Evaluates whether validation listeners are called and have authority over changes.
    */
   @Test
