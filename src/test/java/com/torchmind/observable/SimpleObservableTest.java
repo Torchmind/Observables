@@ -565,6 +565,23 @@ public class SimpleObservableTest {
   }
 
   /**
+   * Evaluates whether circular bindings cause the set method to lock up entirely rather than ending
+   * up in a stack overflow.
+   */
+  @Test(expected = IllegalStateException.class)
+  public void testCircularBinding() {
+    SimpleObservable<String> observable1 = new SimpleObservable<>();
+    SimpleObservable<String> observable2 = new SimpleObservable<>();
+    SimpleObservable<String> observable3 = new SimpleObservable<>();
+
+    observable2.bindTo(observable1);
+    observable3.bindTo(observable2);
+    observable1.bindTo(observable3);
+
+    observable1.set("Test");
+  }
+
+  /**
    * Evaluates whether validation listeners are called and have authority over changes.
    */
   @Test
