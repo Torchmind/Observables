@@ -90,6 +90,19 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   }
 
   /**
+   * Creates a boolean binding with a static return value.
+   */
+  @Nonnull
+  static BooleanBinding staticValue(boolean value) {
+    return new AbstractBooleanBinding(Collections.emptySet()) {
+      @Override
+      protected Boolean compute() {
+        return value;
+      }
+    };
+  }
+
+  /**
    * Combines the two supplied boolean bindings using a binary xor operation.
    */
   @Nonnull
