@@ -582,6 +582,41 @@ public class SimpleObservableTest {
   }
 
   /**
+   * Tests automatic unbinding of all bindings present on an observable.
+   */
+  @Test
+  public void testCompleteUnbinding() {
+    SimpleObservable<String> observable1 = new SimpleObservable<>();
+    SimpleObservable<String> observable2 = new SimpleObservable<>();
+    SimpleObservable<String> observable3 = new SimpleObservable<>();
+
+    observable1.bindTo(observable2);
+    observable1.unbindAll();
+
+    Assert.assertFalse(observable1.isBound());
+    Assert.assertFalse(observable1.isBoundBidirectionally());
+    Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable2));
+    Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable3));
+
+    observable1.bindBidirectionallyTo(observable2);
+    observable1.unbindAll();
+
+    Assert.assertFalse(observable1.isBound());
+    Assert.assertFalse(observable1.isBoundBidirectionally());
+    Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable2));
+    Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable3));
+
+    observable1.bindBidirectionallyTo(observable2);
+    observable1.bindBidirectionallyTo(observable3);
+    observable1.unbindAll();
+
+    Assert.assertFalse(observable1.isBound());
+    Assert.assertFalse(observable1.isBoundBidirectionally());
+    Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable2));
+    Assert.assertFalse(observable1.isBoundBidirectionallyTo(observable3));
+  }
+
+  /**
    * Evaluates whether validation listeners are called and have authority over changes.
    */
   @Test
