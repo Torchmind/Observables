@@ -31,6 +31,8 @@ abstract class AbstractBooleanBinding extends AbstractBinding<Boolean> implement
   public AbstractBooleanBinding(
       @Nonnull Set<ReadOnlyObservable<?>> dependencies) {
     super(dependencies);
+
+    this.invalidate();
   }
 
   /**
