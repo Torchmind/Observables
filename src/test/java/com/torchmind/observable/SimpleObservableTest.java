@@ -529,6 +529,42 @@ public class SimpleObservableTest {
   }
 
   /**
+   * Evaluates whether pyramid (or triangle) bindings (e.g. a -> b -> c -> a) behave as expected.
+   */
+  @Test
+  public void testPyramidBinding() {
+    SimpleObservable<String> observable1 = new SimpleObservable<>();
+    SimpleObservable<String> observable2 = new SimpleObservable<>();
+    SimpleObservable<String> observable3 = new SimpleObservable<>();
+
+    observable2.bindBidirectionallyTo(observable1);
+    observable3.bindBidirectionallyTo(observable2);
+    observable1.bindBidirectionallyTo(observable3);
+
+    Assert.assertEquals(null, observable1.get());
+    Assert.assertEquals(null, observable2.get());
+    Assert.assertEquals(null, observable3.get());
+
+    observable1.set("Test1");
+
+    Assert.assertEquals("Test1", observable1.get());
+    Assert.assertEquals("Test1", observable2.get());
+    Assert.assertEquals("Test1", observable3.get());
+
+    observable2.set("Test2");
+
+    Assert.assertEquals("Test2", observable1.get());
+    Assert.assertEquals("Test2", observable2.get());
+    Assert.assertEquals("Test2", observable3.get());
+
+    observable3.set("Test3");
+
+    Assert.assertEquals("Test3", observable1.get());
+    Assert.assertEquals("Test3", observable2.get());
+    Assert.assertEquals("Test3", observable3.get());
+  }
+
+  /**
    * Evaluates whether validation listeners are called and have authority over changes.
    */
   @Test
