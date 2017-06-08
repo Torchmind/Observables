@@ -1068,7 +1068,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static DoubleBinding floor(@Nonnull ReadOnlyFloatObservable observable) {
-    return DoubleBinding.create(() -> Math.floor(observable.getValue()));
+    return DoubleBinding.create(() -> Math.floor(observable.getValue()), observable);
   }
 
   /**
@@ -1076,7 +1076,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static DoubleBinding floor(@Nonnull ReadOnlyDoubleObservable observable) {
-    return DoubleBinding.create(() -> Math.floor(observable.getValue()));
+    return DoubleBinding.create(() -> Math.floor(observable.getValue()), observable);
   }
 
   /**
@@ -1084,7 +1084,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ByteBinding floorToByte(@Nonnull ReadOnlyFloatObservable observable) {
-    return ByteBinding.create(() -> (byte) Math.floor(observable.getValue()));
+    return ByteBinding.create(() -> (byte) Math.floor(observable.getValue()), observable);
   }
 
   /**
@@ -1092,7 +1092,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ByteBinding floorToByte(@Nonnull ReadOnlyDoubleObservable observable) {
-    return ByteBinding.create(() -> (byte) Math.floor(observable.getValue()));
+    return ByteBinding.create(() -> (byte) Math.floor(observable.getValue()), observable);
   }
 
   /**
@@ -1100,7 +1100,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ShortBinding floorToShort(@Nonnull ReadOnlyFloatObservable observable) {
-    return ShortBinding.create(() -> (short) Math.floor(observable.getValue()));
+    return ShortBinding.create(() -> (short) Math.floor(observable.getValue()), observable);
   }
 
   /**
@@ -1108,7 +1108,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ShortBinding floorToShort(@Nonnull ReadOnlyDoubleObservable observable) {
-    return ShortBinding.create(() -> (short) Math.floor(observable.getValue()));
+    return ShortBinding.create(() -> (short) Math.floor(observable.getValue()), observable);
   }
 
   /**
@@ -1116,7 +1116,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static IntegerBinding floorToInteger(@Nonnull ReadOnlyFloatObservable observable) {
-    return IntegerBinding.create(() -> (int) Math.floor(observable.getValue()));
+    return IntegerBinding.create(() -> (int) Math.floor(observable.getValue()), observable);
   }
 
   /**
@@ -1124,7 +1124,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static IntegerBinding floorToInteger(@Nonnull ReadOnlyDoubleObservable observable) {
-    return IntegerBinding.create(() -> (int) Math.floor(observable.getValue()));
+    return IntegerBinding.create(() -> (int) Math.floor(observable.getValue()), observable);
   }
 
   /**
@@ -1132,7 +1132,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static LongBinding floorToLong(@Nonnull ReadOnlyFloatObservable observable) {
-    return LongBinding.create(() -> (long) Math.floor(observable.getValue()));
+    return LongBinding.create(() -> (long) Math.floor(observable.getValue()), observable);
   }
 
   /**
@@ -1140,7 +1140,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static LongBinding floorToLong(@Nonnull ReadOnlyDoubleObservable observable) {
-    return LongBinding.create(() -> (long) Math.floor(observable.getValue()));
+    return LongBinding.create(() -> (long) Math.floor(observable.getValue()), observable);
   }
 
   /**
@@ -1148,7 +1148,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static DoubleBinding ceil(@Nonnull ReadOnlyFloatObservable observable) {
-    return DoubleBinding.create(() -> Math.ceil(observable.getValue()));
+    return DoubleBinding.create(() -> Math.ceil(observable.getValue()), observable);
   }
 
   /**
@@ -1156,7 +1156,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static DoubleBinding ceil(@Nonnull ReadOnlyDoubleObservable observable) {
-    return DoubleBinding.create(() -> Math.ceil(observable.getValue()));
+    return DoubleBinding.create(() -> Math.ceil(observable.getValue()), observable);
   }
 
   /**
@@ -1164,7 +1164,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ByteBinding ceilToByte(@Nonnull ReadOnlyFloatObservable observable) {
-    return ByteBinding.create(() -> (byte) Math.ceil(observable.getValue()));
+    return ByteBinding.create(() -> (byte) Math.ceil(observable.getValue()), observable);
   }
 
   /**
@@ -1172,7 +1172,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ByteBinding ceilToByte(@Nonnull ReadOnlyDoubleObservable observable) {
-    return ByteBinding.create(() -> (byte) Math.ceil(observable.getValue()));
+    return ByteBinding.create(() -> (byte) Math.ceil(observable.getValue()), observable);
   }
 
   /**
@@ -1180,7 +1180,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ShortBinding ceilToShort(@Nonnull ReadOnlyFloatObservable observable) {
-    return ShortBinding.create(() -> (short) Math.ceil(observable.getValue()));
+    return ShortBinding.create(() -> (short) Math.ceil(observable.getValue()), observable);
   }
 
   /**
@@ -1188,7 +1188,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ShortBinding ceilToShort(@Nonnull ReadOnlyDoubleObservable observable) {
-    return ShortBinding.create(() -> (short) Math.ceil(observable.getValue()));
+    return ShortBinding.create(() -> (short) Math.ceil(observable.getValue()), observable);
   }
 
   /**
@@ -1196,7 +1196,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static IntegerBinding ceilToInteger(@Nonnull ReadOnlyFloatObservable observable) {
-    return IntegerBinding.create(() -> (int) Math.ceil(observable.getValue()));
+    return IntegerBinding.create(() -> (int) Math.ceil(observable.getValue()), observable);
   }
 
   /**
@@ -1204,7 +1204,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static IntegerBinding ceilToInteger(@Nonnull ReadOnlyDoubleObservable observable) {
-    return IntegerBinding.create(() -> (int) Math.ceil(observable.getValue()));
+    return IntegerBinding.create(() -> (int) Math.ceil(observable.getValue()), observable);
   }
 
   /**
@@ -1212,7 +1212,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static LongBinding ceilToLong(@Nonnull ReadOnlyFloatObservable observable) {
-    return LongBinding.create(() -> (long) Math.ceil(observable.getValue()));
+    return LongBinding.create(() -> (long) Math.ceil(observable.getValue()), observable);
   }
 
   /**
@@ -1220,7 +1220,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static LongBinding ceilToLong(@Nonnull ReadOnlyDoubleObservable observable) {
-    return LongBinding.create(() -> (long) Math.ceil(observable.getValue()));
+    return LongBinding.create(() -> (long) Math.ceil(observable.getValue()), observable);
   }
 
   /**
@@ -1228,7 +1228,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static IntegerBinding round(@Nonnull ReadOnlyFloatObservable observable) {
-    return IntegerBinding.create(() -> Math.round(observable.getValue()));
+    return IntegerBinding.create(() -> Math.round(observable.getValue()), observable);
   }
 
   /**
@@ -1236,7 +1236,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static LongBinding round(@Nonnull ReadOnlyDoubleObservable observable) {
-    return LongBinding.create(() -> Math.round(observable.getValue()));
+    return LongBinding.create(() -> Math.round(observable.getValue()), observable);
   }
 
   /**
@@ -1244,7 +1244,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ByteBinding roundToByte(@Nonnull ReadOnlyFloatObservable observable) {
-    return ByteBinding.create(() -> (byte) Math.round(observable.getValue()));
+    return ByteBinding.create(() -> (byte) Math.round(observable.getValue()), observable);
   }
 
   /**
@@ -1252,7 +1252,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ByteBinding roundToByte(@Nonnull ReadOnlyDoubleObservable observable) {
-    return ByteBinding.create(() -> (byte) Math.round(observable.getValue()));
+    return ByteBinding.create(() -> (byte) Math.round(observable.getValue()), observable);
   }
 
   /**
@@ -1260,7 +1260,7 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ShortBinding roundToShort(@Nonnull ReadOnlyFloatObservable observable) {
-    return ShortBinding.create(() -> (short) Math.round(observable.getValue()));
+    return ShortBinding.create(() -> (short) Math.round(observable.getValue()), observable);
   }
 
   /**
@@ -1268,6 +1268,6 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    */
   @Nonnull
   static ShortBinding roundToShort(@Nonnull ReadOnlyDoubleObservable observable) {
-    return ShortBinding.create(() -> (short) Math.round(observable.getValue()));
+    return ShortBinding.create(() -> (short) Math.round(observable.getValue()), observable);
   }
 }
