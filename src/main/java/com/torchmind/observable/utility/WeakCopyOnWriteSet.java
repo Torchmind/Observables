@@ -112,7 +112,7 @@ public class WeakCopyOnWriteSet<E> extends AbstractSet<E> {
   @Override
   public boolean remove(Object o) {
     this.performCleanup();
-    return super.remove(o);
+    return this.elements.removeIf((r) -> Objects.equals(o, r.get()));
   }
 
   /**
