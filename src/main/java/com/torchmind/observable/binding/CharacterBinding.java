@@ -17,7 +17,12 @@
 
 package com.torchmind.observable.binding;
 
+import com.torchmind.observable.ReadOnlyObservable;
 import com.torchmind.observable.primitive.ReadOnlyCharacterObservable;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.function.Supplier;
+import javax.annotation.Nonnull;
 
 /**
  * Provides a base to character valued bindings.
@@ -26,4 +31,21 @@ import com.torchmind.observable.primitive.ReadOnlyCharacterObservable;
  */
 public interface CharacterBinding extends Binding<Character>, ReadOnlyCharacterObservable {
 
+  /**
+   * <p>Creates a binding using the passed supplier and list of dependencies.</p>
+   *
+   * <p>Note that this method requires manual implementation of the respective binding logic. For
+   * most cases, however, the static methods provided by this interface do suffice however and
+   * require far less manually programmed logic.</p>
+   */
+  @Nonnull
+  static CharacterBinding create(@Nonnull Supplier<Character> supplier,
+      ReadOnlyObservable<?>... observables) {
+    return new AbstractCharacterBinding(new HashSet<>(Arrays.asList(observables))) {
+      @Override
+      protected Character compute() {
+        return supplier.get();
+      }
+    };
+  }
 }

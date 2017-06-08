@@ -17,7 +17,12 @@
 
 package com.torchmind.observable.binding;
 
+import com.torchmind.observable.ReadOnlyObservable;
 import com.torchmind.observable.primitive.ReadOnlyIntegerObservable;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.function.IntSupplier;
+import javax.annotation.Nonnull;
 
 /**
  * Provides a base to integer valued bindings.
@@ -26,4 +31,21 @@ import com.torchmind.observable.primitive.ReadOnlyIntegerObservable;
  */
 public interface IntegerBinding extends NumberBinding<Integer>, ReadOnlyIntegerObservable {
 
+  /**
+   * <p>Creates a binding using the passed supplier and list of dependencies.</p>
+   *
+   * <p>Note that this method requires manual implementation of the respective binding logic. For
+   * most cases, however, the static methods provided by this interface do suffice however and
+   * require far less manually programmed logic.</p>
+   */
+  @Nonnull
+  static IntegerBinding create(@Nonnull IntSupplier supplier,
+      ReadOnlyObservable<?>... observables) {
+    return new AbstractIntegerBinding(new HashSet<>(Arrays.asList(observables))) {
+      @Override
+      protected Integer compute() {
+        return supplier.getAsInt();
+      }
+    };
+  }
 }

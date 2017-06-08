@@ -17,7 +17,12 @@
 
 package com.torchmind.observable.binding;
 
+import com.torchmind.observable.ReadOnlyObservable;
 import com.torchmind.observable.primitive.ReadOnlyFloatObservable;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.function.Supplier;
+import javax.annotation.Nonnull;
 
 /**
  * Provides a base to float valued bindings.
@@ -26,4 +31,21 @@ import com.torchmind.observable.primitive.ReadOnlyFloatObservable;
  */
 public interface FloatBinding extends NumberBinding<Float>, ReadOnlyFloatObservable {
 
+  /**
+   * <p>Creates a binding using the passed supplier and list of dependencies.</p>
+   *
+   * <p>Note that this method requires manual implementation of the respective binding logic. For
+   * most cases, however, the static methods provided by this interface do suffice however and
+   * require far less manually programmed logic.</p>
+   */
+  @Nonnull
+  static FloatBinding create(@Nonnull Supplier<Float> supplier,
+      ReadOnlyObservable<?>... observables) {
+    return new AbstractFloatBinding(new HashSet<>(Arrays.asList(observables))) {
+      @Override
+      protected Float compute() {
+        return supplier.get();
+      }
+    };
+  }
 }

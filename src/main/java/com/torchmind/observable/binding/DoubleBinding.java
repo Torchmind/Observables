@@ -17,7 +17,12 @@
 
 package com.torchmind.observable.binding;
 
+import com.torchmind.observable.ReadOnlyObservable;
 import com.torchmind.observable.primitive.ReadOnlyDoubleObservable;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.function.DoubleSupplier;
+import javax.annotation.Nonnull;
 
 /**
  * Provides a base to double valued bindings.
@@ -26,4 +31,21 @@ import com.torchmind.observable.primitive.ReadOnlyDoubleObservable;
  */
 public interface DoubleBinding extends NumberBinding<Double>, ReadOnlyDoubleObservable {
 
+  /**
+   * <p>Creates a binding using the passed supplier and list of dependencies.</p>
+   *
+   * <p>Note that this method requires manual implementation of the respective binding logic. For
+   * most cases, however, the static methods provided by this interface do suffice however and
+   * require far less manually programmed logic.</p>
+   */
+  @Nonnull
+  static DoubleBinding create(@Nonnull DoubleSupplier supplier,
+      ReadOnlyObservable<?>... observables) {
+    return new AbstractDoubleBinding(new HashSet<>(Arrays.asList(observables))) {
+      @Override
+      protected Double compute() {
+        return supplier.getAsDouble();
+      }
+    };
+  }
 }
