@@ -1270,4 +1270,258 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   static ShortBinding roundToShort(@Nonnull ReadOnlyDoubleObservable observable) {
     return ShortBinding.create(() -> (short) Math.round(observable.getValue()), observable);
   }
+
+  // Min & Max
+
+  /**
+   * Creates a binding which evaluates the smallest value of all passed observables.
+   */
+  @Nonnull
+  static ByteBinding min(@Nonnull ReadOnlyByteObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return ByteBinding.create(() -> {
+      byte value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = (byte) Math.min(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the biggest value of all passed observables.
+   */
+  @Nonnull
+  static ByteBinding max(@Nonnull ReadOnlyByteObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return ByteBinding.create(() -> {
+      byte value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = (byte) Math.max(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the smallest value of all passed observables.
+   */
+  @Nonnull
+  static ShortBinding min(@Nonnull ReadOnlyShortObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return ShortBinding.create(() -> {
+      short value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = (short) Math.min(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the biggest value of all passed observables.
+   */
+  @Nonnull
+  static ShortBinding max(@Nonnull ReadOnlyShortObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return ShortBinding.create(() -> {
+      short value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = (short) Math.max(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the smallest value of all passed observables.
+   */
+  @Nonnull
+  static IntegerBinding min(@Nonnull ReadOnlyIntegerObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return IntegerBinding.create(() -> {
+      int value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = Math.min(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the biggest value of all passed observables.
+   */
+  @Nonnull
+  static IntegerBinding max(@Nonnull ReadOnlyIntegerObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return IntegerBinding.create(() -> {
+      int value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = Math.max(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the smallest value of all passed observables.
+   */
+  @Nonnull
+  static LongBinding min(@Nonnull ReadOnlyLongObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return LongBinding.create(() -> {
+      long value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = Math.min(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the biggest value of all passed observables.
+   */
+  @Nonnull
+  static LongBinding max(@Nonnull ReadOnlyLongObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return LongBinding.create(() -> {
+      long value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = Math.max(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the smallest value of all passed observables.
+   */
+  @Nonnull
+  static FloatBinding min(@Nonnull ReadOnlyFloatObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return FloatBinding.create(() -> {
+      float value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = Math.min(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the biggest value of all passed observables.
+   */
+  @Nonnull
+  static FloatBinding max(@Nonnull ReadOnlyFloatObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return FloatBinding.create(() -> {
+      float value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = Math.max(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the smallest value of all passed observables.
+   */
+  @Nonnull
+  static DoubleBinding min(@Nonnull ReadOnlyDoubleObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return DoubleBinding.create(() -> {
+      double value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = Math.min(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
+
+  /**
+   * Creates a binding which evaluates the biggest value of all passed observables.
+   */
+  @Nonnull
+  static DoubleBinding max(@Nonnull ReadOnlyDoubleObservable... observables) {
+    if (observables.length == 0) {
+      throw new IllegalArgumentException(
+          "Illegal binding configuration: Expected at least one observable");
+    }
+
+    return DoubleBinding.create(() -> {
+      double value = observables[0].getValue();
+
+      for (int i = 1; i < observables.length; ++i) {
+        value = Math.max(value, observables[i].getValue());
+      }
+
+      return value;
+    }, observables);
+  }
 }
