@@ -79,7 +79,7 @@ public abstract class AbstractConcurrentReadOnlyObservable<V> implements ReadOnl
     this.writeLock.lock();
 
     try {
-      this.listeners.add(listener);
+      this.listeners.remove(listener);
     } finally {
       this.writeLock.unlock();
     }
