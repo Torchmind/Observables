@@ -16,9 +16,18 @@
  */
 
 /**
- * Provides thread safe immutable implementations which ensure their local state stays valid even
- * when multiple threads access their memory at the same time without the need of outside locking
- * or synchronization operations.
+ * <p>Provides thread safe immutable implementations which ensure their local state stays valid even
+ * when multiple threads access their memory at the same time without the need of outside locking or
+ * synchronization operations.</p>
+ *
+ * <p>Please note that great care should be taken when binding to non thread safe implementations of
+ * the specification as calls may come from different threads at the same time. As such, the use of
+ * bidirectional bindings between thread safe and non thread safe bindings is highly
+ * discouraged.</p>
+ *
+ * <p>Note however, that unidirectional bindings which cause thread safe implementations to be
+ * called by a non thread safe implementations are generally safe as they do not violate this API
+ * contract.</p>
  *
  * @author <a href="mailto:johannesd@torchmind.com">Johannes Donath</a>
  */
