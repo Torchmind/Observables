@@ -21,7 +21,7 @@ import com.torchmind.observable.listener.ValidationListener;
 import javax.annotation.Nullable;
 
 /**
- * Provides a rather simply version of the observable system.
+ * Provides a rather simple version of the observable system.
  *
  * @author <a href="mailto:johannesd@torchmind.com">Johannes Donath</a>
  */
