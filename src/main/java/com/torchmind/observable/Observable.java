@@ -40,9 +40,9 @@ public interface Observable<V> extends ReadOnlyObservable<V> {
   /**
    * <p>Evaluates whether this observable is in a valid state.</p>
    *
-   * <p>This method returns true as long as no prior call to {@link #invalidate()} has changed
-   * the validity and will return back to true when all heirs and listeners have been notified of
-   * this change.</p>
+   * <p>This method returns true as long as no prior call to {@link #set(Object)}} has changed the
+   * validity and will return back to true when all heirs and listeners have been notified of this
+   * change.</p>
    */
   boolean isValid();
 
