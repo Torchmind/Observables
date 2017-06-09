@@ -40,7 +40,6 @@ import javax.annotation.concurrent.ThreadSafe;
 @ThreadSafe
 public abstract class AbstractConcurrentReadOnlyObservable<V> implements ReadOnlyObservable<V> {
 
-  private final Lock writeLock = new ReentrantLock();
   private final Set<ChangeListener<? super V>> listeners = new WeakCopyOnWriteSet<>();
 
   /**
@@ -62,13 +61,7 @@ public abstract class AbstractConcurrentReadOnlyObservable<V> implements ReadOnl
    */
   @Override
   public void registerListener(@Nonnull ChangeListener<? super V> listener) {
-    this.writeLock.lock();
-
-    try {
-      this.listeners.add(listener);
-    } finally {
-      this.writeLock.unlock();
-    }
+    this.listeners.add(listener);
   }
 
   /**
@@ -76,12 +69,6 @@ public abstract class AbstractConcurrentReadOnlyObservable<V> implements ReadOnl
    */
   @Override
   public void removeListener(@Nonnull ChangeListener<? super V> listener) {
-    this.writeLock.lock();
-
-    try {
-      this.listeners.remove(listener);
-    } finally {
-      this.writeLock.unlock();
-    }
+    this.listeners.remove(listener);
   }
 }
