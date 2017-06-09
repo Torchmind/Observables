@@ -30,9 +30,6 @@ public interface Observable<V> extends ReadOnlyObservable<V> {
   /**
    * <p>Updates the internal value of this observable using the passed value.</p>
    *
-   * <p>This method is comparable to {@link #invalidate()} as it will notify all of its heirs and
-   * listeners.</p>
-   *
    * @throws IllegalArgumentException when the backing invalidation listener deems the passed value
    * to be invalid.
    * @throws IllegalStateException when a unidirectional binding prevents the caller from changing
