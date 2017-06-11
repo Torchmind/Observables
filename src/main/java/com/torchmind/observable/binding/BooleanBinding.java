@@ -22,6 +22,7 @@ import com.torchmind.observable.primitive.ReadOnlyBooleanObservable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.function.BooleanSupplier;
 import javax.annotation.Nonnull;
 
@@ -64,6 +65,16 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   }
 
   /**
+   * Evaluates whether the two supplied observables are equal in value.
+   */
+  @Nonnull
+  static BooleanBinding equals(@Nonnull ReadOnlyObservable<?> observable1,
+      @Nonnull ReadOnlyObservable observable2) {
+    return create(() -> Objects.equals(observable1.get(), observable2.get()), observable1,
+        observable2);
+  }
+
+  /**
    * Combines the two supplied boolean bindings using a binary not operation.
    */
   @Nonnull
@@ -74,6 +85,16 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
         return !a.getValue();
       }
     };
+  }
+
+  /**
+   * Evaluates whether the two supplied observables are not equal in value.
+   */
+  @Nonnull
+  static BooleanBinding notEquals(@Nonnull ReadOnlyObservable<?> observable1,
+      @Nonnull ReadOnlyObservable<?> observable2) {
+    return create(() -> !Objects.equals(observable1.get(), observable2.get()), observable1,
+        observable2);
   }
 
   /**
