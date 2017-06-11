@@ -17,6 +17,7 @@
 
 package com.torchmind.observable;
 
+import java.util.function.Consumer;
 import javax.annotation.Nonnull;
 
 /**
@@ -26,6 +27,14 @@ import javax.annotation.Nonnull;
  * @author <a href="mailto:johannesd@torchmind.com">Johannes Donath</a>
  */
 public interface Observable<V> extends ReadOnlyObservable<V> {
+
+  /**
+   * Converts this observable into a standard Java consumer.
+   */
+  @Nonnull
+  default Consumer<V> asConsumer() {
+    return this::set;
+  }
 
   /**
    * <p>Updates the internal value of this observable using the passed value.</p>
