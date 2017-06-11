@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.BiPredicate;
 import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import javax.annotation.Nonnull;
 
@@ -50,6 +51,18 @@ public interface Binding<V> extends ReadOnlyObservable<V> {
         return supplier.get();
       }
     };
+  }
+
+  /**
+   * <p>Maps an original value to another using complex logic.</p>
+   *
+   * <p>Note that the provided mapping function must be null-safe as no attempts will be made to
+   * strip or special case null values provided by the supplied observable.</p>
+   */
+  @Nonnull
+  static <I, O> Binding<O> map(@Nonnull Function<I, O> function,
+      @Nonnull ReadOnlyObservable<I> observable) {
+    return create(() -> function.apply(observable.get()), observable);
   }
 
   /**
