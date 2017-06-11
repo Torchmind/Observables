@@ -21,6 +21,7 @@ import com.torchmind.observable.ReadOnlyObservable;
 import com.torchmind.observable.listener.ChangeListener;
 import com.torchmind.observable.utility.WeakCopyOnWriteSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -54,6 +55,29 @@ public abstract class AbstractConcurrentReadOnlyObservable<V> implements ReadOnl
     }
 
     this.listeners.forEach((l) -> l.onChange(this, oldValue, newValue));
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Nonnull
+  @Override
+  public Optional<V> getAsOptional() {
+    return Optional.ofNullable(this.get());
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public V getOrDefault(V defaultValue) {
+    V value = this.get();
+
+    if (value == null) {
+      return defaultValue;
+    }
+
+    return value;
   }
 
   /**

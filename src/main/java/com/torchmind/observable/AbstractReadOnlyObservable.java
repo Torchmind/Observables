@@ -20,6 +20,7 @@ package com.torchmind.observable;
 import com.torchmind.observable.listener.ChangeListener;
 import java.util.Collections;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.WeakHashMap;
 import javax.annotation.Nonnull;
@@ -54,6 +55,29 @@ public abstract class AbstractReadOnlyObservable<V> implements ReadOnlyObservabl
     }
 
     this.listeners.forEach((l) -> l.onChange(this, oldValue, newValue));
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Nonnull
+  @Override
+  public Optional<V> getAsOptional() {
+    return Optional.ofNullable(this.get());
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public V getOrDefault(V defaultValue) {
+    V value = this.get();
+
+    if (value == null) {
+      return defaultValue;
+    }
+
+    return value;
   }
 
   /**

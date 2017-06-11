@@ -18,6 +18,7 @@
 package com.torchmind.observable;
 
 import com.torchmind.observable.listener.ChangeListener;
+import java.util.Optional;
 import javax.annotation.Nonnull;
 
 /**
@@ -36,6 +37,26 @@ public interface ReadOnlyObservable<V> {
    * of its value.
    */
   V get();
+
+  /**
+   * <p>Returns the value exposed by this observable wrapped in an optional.</p>
+   *
+   * <p>Note that null values will logically return an empty optional rather than returning an
+   * optional which contains null.</p>
+   *
+   * @throws IllegalStateException when the state of this observable does not permit the retrieval
+   * of its value.
+   */
+  @Nonnull
+  Optional<V> getAsOptional();
+
+  /**
+   * Returns the passed default value if the property's value evaluates to null.
+   *
+   * @throws IllegalStateException when the state of this observable does not permit the retrieval
+   * of its value.
+   */
+  V getOrDefault(V defaultValue);
 
   /**
    * <p>Registers a new listener with this observable which is invoked whenever the value exposed
