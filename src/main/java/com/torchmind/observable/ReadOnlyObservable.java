@@ -48,7 +48,9 @@ public interface ReadOnlyObservable<V> {
    * of its value.
    */
   @Nonnull
-  Optional<V> getAsOptional();
+  default Optional<V> getAsOptional() {
+    return Optional.ofNullable(this.get());
+  }
 
   /**
    * Returns the passed default value if the property's value evaluates to null.
@@ -56,7 +58,15 @@ public interface ReadOnlyObservable<V> {
    * @throws IllegalStateException when the state of this observable does not permit the retrieval
    * of its value.
    */
-  V getOrDefault(V defaultValue);
+  default V getOrDefault(V defaultValue) {
+    V value = this.get();
+
+    if (value == null) {
+      return defaultValue;
+    }
+
+    return value;
+  }
 
   /**
    * <p>Registers a new listener with this observable which is invoked whenever the value exposed

@@ -60,29 +60,6 @@ public abstract class AbstractReadOnlyObservable<V> implements ReadOnlyObservabl
   /**
    * {@inheritDoc}
    */
-  @Nonnull
-  @Override
-  public Optional<V> getAsOptional() {
-    return Optional.ofNullable(this.get());
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public V getOrDefault(V defaultValue) {
-    V value = this.get();
-
-    if (value == null) {
-      return defaultValue;
-    }
-
-    return value;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void registerListener(@Nonnull ChangeListener<? super V> listener) {
     this.listeners.add(listener);
