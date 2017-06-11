@@ -19,6 +19,7 @@ package com.torchmind.observable;
 
 import com.torchmind.observable.listener.ChangeListener;
 import java.util.Optional;
+import java.util.function.Supplier;
 import javax.annotation.Nonnull;
 
 /**
@@ -29,6 +30,14 @@ import javax.annotation.Nonnull;
  * @author <a href="mailto:johannesd@torchmind.com">Johannes Donath</a>
  */
 public interface ReadOnlyObservable<V> {
+
+  /**
+   * Converts this observable into a standard Java supplier.
+   */
+  @Nonnull
+  default Supplier<V> asSupplier() {
+    return this::get;
+  }
 
   /**
    * Returns the value exposed by this observable.
