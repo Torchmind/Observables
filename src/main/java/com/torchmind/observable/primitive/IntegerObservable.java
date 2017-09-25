@@ -17,12 +17,23 @@
 
 package com.torchmind.observable.primitive;
 
+import java.util.function.IntConsumer;
+import javax.annotation.Nonnull;
+
 /**
  * Provides a observable implementation which simplifies access to integer values.
  *
  * @author <a href="mailto:johannesd@torchmind.com">Johannes Donath</a>
  */
 public interface IntegerObservable extends NumberObservable<Integer>, ReadOnlyIntegerObservable {
+
+  /**
+   * Converts this observable into a standard Java consumer.
+   */
+  @Nonnull
+  default IntConsumer asIntConsumer() {
+    return this::setValue;
+  }
 
   /**
    * @see #set(Object) for a wrapped version of the value.

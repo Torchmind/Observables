@@ -20,6 +20,7 @@ package com.torchmind.observable;
 import com.torchmind.observable.listener.ChangeListener;
 import java.util.Collections;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.WeakHashMap;
 import javax.annotation.Nonnull;

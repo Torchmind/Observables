@@ -15,26 +15,46 @@
  * limitations under the License.
  */
 
-package com.torchmind.observable.primitive;
+package com.torchmind.observable;
 
-import java.util.function.LongConsumer;
+import com.torchmind.observable.listener.ValidationListener;
+import javax.annotation.Nullable;
 
 /**
- * Provides a observable implementation which simplifies access to long values.
+ * Provides a rather simple Enum based observable.
  *
  * @author <a href="mailto:johannesd@torchmind.com">Johannes Donath</a>
  */
-public interface LongObservable extends NumberObservable<Long>, ReadOnlyLongObservable {
+public class SimpleEnumObservable<E extends Enum<E>> extends AbstractObservable<E> {
 
-  /**
-   * Converts this observable into a standard Java consumer.
-   */
-  default LongConsumer asLongConsumer() {
-    return this::setValue;
+  private final E fallbackValue;
+
+  public SimpleEnumObservable(
+      @Nullable ValidationListener<E> validationListener,
+      E value, E fallbackValue) {
+    super(validationListener, value);
+    this.fallbackValue = fallbackValue;
+  }
+
+  public SimpleEnumObservable(E value) {
+    this(null, value, null);
+  }
+
+  public SimpleEnumObservable() {
+    this(null);
   }
 
   /**
-   * @see #set(Object) for a wrapped version of the value.
+   * {@inheritDoc}
    */
-  void setValue(long value);
+  @Override
+  public E get() {
+    E value = super.get();
+
+    if (value == null) {
+      return this.fallbackValue;
+    }
+
+    return value;
+  }
 }

@@ -21,6 +21,9 @@ import com.torchmind.observable.ReadOnlyObservable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import javax.annotation.Nonnull;
 
@@ -48,6 +51,44 @@ public interface Binding<V> extends ReadOnlyObservable<V> {
         return supplier.get();
       }
     };
+  }
+
+  /**
+   * <p>Maps an original value to another using complex logic.</p>
+   *
+   * <p>Note that the provided mapping function must be null-safe as no attempts will be made to
+   * strip or special case null values provided by the supplied observable.</p>
+   */
+  @Nonnull
+  static <I, O> Binding<O> map(@Nonnull Function<I, O> function,
+      @Nonnull ReadOnlyObservable<I> observable) {
+    return create(() -> function.apply(observable.get()), observable);
+  }
+
+  /**
+   * Creates a binding which is equal in functionality to the ternary operator (e.g. when the
+   * predicate evaluates to true, the first observable value is returned, otherwise the second is
+   * returned).
+   */
+  @Nonnull
+  static <V> Binding<V> ternary(@Nonnull BiPredicate<V, V> predicate,
+      @Nonnull ReadOnlyObservable<? extends V> observable1,
+      @Nonnull ReadOnlyObservable<? extends V> observable2) {
+    return create(() -> {
+      V value1 = observable1.get();
+      V value2 = observable2.get();
+
+      return predicate.test(value1, value2) ? value1 : value2;
+    }, observable1, observable2);
+  }
+
+  /**
+   * Creates a binding which is equal in functionality to the ternary operator (e.g. when the
+   * supplier evaluates to true, the first value is returned, otherwise the second is returned).
+   */
+  @Nonnull
+  static <V> Binding<V> ternary(@Nonnull BooleanSupplier supplier, V value1, V value2) {
+    return create(() -> supplier.getAsBoolean() ? value1 : value2);
   }
 
   /**

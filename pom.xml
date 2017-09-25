@@ -24,7 +24,7 @@
   <!-- Artifact Information -->
   <groupId>com.torchmind</groupId>
   <artifactId>observables</artifactId>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <prerequisites>
@@ -96,6 +96,7 @@
       <artifactId>jsr305</artifactId>
       <version>3.0.1</version>
       <scope>provided</scope>
+      <optional>true</optional>
     </dependency>
 
     <!-- Test Dependencies -->
@@ -160,6 +161,10 @@
             <addMavenDescriptor>true</addMavenDescriptor>
             <compress>true</compress>
             <index>true</index>
+
+            <manifestEntries>
+              <Automatic-Module-Name>com.torchmind.observable</Automatic-Module-Name>
+            </manifestEntries>
           </archive>
         </configuration>
       </plugin>

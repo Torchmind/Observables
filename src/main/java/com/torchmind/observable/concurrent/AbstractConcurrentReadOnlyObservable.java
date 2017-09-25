@@ -21,6 +21,7 @@ import com.torchmind.observable.ReadOnlyObservable;
 import com.torchmind.observable.listener.ChangeListener;
 import com.torchmind.observable.utility.WeakCopyOnWriteSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
