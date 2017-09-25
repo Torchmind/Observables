@@ -160,6 +160,10 @@
             <addMavenDescriptor>true</addMavenDescriptor>
             <compress>true</compress>
             <index>true</index>
+
+            <manifestEntries>
+              <Automatic-Module-Name>com.torchmind.observable</Automatic-Module-Name>
+            </manifestEntries>
           </archive>
         </configuration>
       </plugin>
