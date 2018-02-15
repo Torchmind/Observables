@@ -166,7 +166,7 @@
 
         <configuration>
           <configLocation>google_checks.xml</configLocation>
-          <excludes>module-info.java</excludes> <!-- Not updated for Java 9 yet -->
+          <excludes>module-info.java</excludes>
         </configuration>
 
         <executions>
