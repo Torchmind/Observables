@@ -22,7 +22,7 @@ via maven central as follows:
   <dependency>
     <groupId>com.torchmind</groupId>
     <artifactId>observables</artifactId>
-    <version>1.0</version>
+    <version>1.1.0</version>
   </dependency>
 </dependencies>
 <!-- ... -->
