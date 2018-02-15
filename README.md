@@ -206,8 +206,8 @@ rejection.
 History
 -------
 
-06/06/2017 - First designs
-06/07/2017 - Publication on GitHub
+06/06/2017 - First designs<br />
+06/07/2017 - Publication on GitHub<br />
 02/15/2018 - Added Java 9 Support (Jigsaw Manifest)
 
 Credits
