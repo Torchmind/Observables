@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/github/license/Torchmind/Observables.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.txt)
-[![Maven Central](https://img.shields.io/maven-central/v/com.torchmind/observables.svg?style=flat-square)](https://search.maven.org/#search%7Cga%7C1%7Cg%3Acom.torchmind.utility%20a%3Aobservables)
+[![Maven Central](https://img.shields.io/maven-central/v/com.torchmind/observables.svg?style=flat-square)](https://search.maven.org/#search%7Cga%7C1%7Cg%3Acom.torchmind%20a%3Aobservables)
 [![GitHub Release](https://img.shields.io/github/release/Torchmind/Observables.svg?style=flat-square)](https://github.com/Torchmind/Observables/releases)
 [![CircleCI](https://img.shields.io/circleci/project/github/Torchmind/Observables.svg?style=flat-square)](https://circleci.com/gh/Torchmind/Observables)
 
