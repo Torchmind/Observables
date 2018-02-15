@@ -19,7 +19,7 @@ package com.torchmind.observable.primitive;
 
 import com.torchmind.observable.AbstractObservable;
 import com.torchmind.observable.listener.ValidationListener;
-import javax.annotation.Nullable;
+import edu.umd.cs.findbugs.annotations.Nullable;
 
 /**
  * Provides a observable implementation which simplifies access to byte values.

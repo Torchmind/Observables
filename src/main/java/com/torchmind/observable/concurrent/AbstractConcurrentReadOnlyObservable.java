@@ -20,13 +20,9 @@ package com.torchmind.observable.concurrent;
 import com.torchmind.observable.ReadOnlyObservable;
 import com.torchmind.observable.listener.ChangeListener;
 import com.torchmind.observable.utility.WeakCopyOnWriteSet;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * <p>Provides a basic thread safe implementation for observable properties.</p>
@@ -38,7 +34,6 @@ import javax.annotation.concurrent.ThreadSafe;
  *
  * @author <a href="mailto:johannesd@torchmind.com">Johannes Donath</a>
  */
-@ThreadSafe
 public abstract class AbstractConcurrentReadOnlyObservable<V> implements ReadOnlyObservable<V> {
 
   private final Set<ChangeListener<? super V>> listeners = new WeakCopyOnWriteSet<>();
@@ -61,7 +56,7 @@ public abstract class AbstractConcurrentReadOnlyObservable<V> implements ReadOnl
    * {@inheritDoc}
    */
   @Override
-  public void registerListener(@Nonnull ChangeListener<? super V> listener) {
+  public void registerListener(@NonNull ChangeListener<? super V> listener) {
     this.listeners.add(listener);
   }
 
@@ -69,7 +64,7 @@ public abstract class AbstractConcurrentReadOnlyObservable<V> implements ReadOnl
    * {@inheritDoc}
    */
   @Override
-  public void removeListener(@Nonnull ChangeListener<? super V> listener) {
+  public void removeListener(@NonNull ChangeListener<? super V> listener) {
     this.listeners.remove(listener);
   }
 }

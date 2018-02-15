@@ -18,7 +18,7 @@
 package com.torchmind.observable.listener;
 
 import com.torchmind.observable.Observable;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a listener for the purposes of validating new values within standard property
@@ -32,5 +32,5 @@ public interface ValidationListener<V> {
   /**
    * Validates a new value before it is stored in the backing field.
    */
-  void validate(@Nonnull Observable<V> observable, V newValue);
+  void validate(@NonNull Observable<V> observable, V newValue);
 }

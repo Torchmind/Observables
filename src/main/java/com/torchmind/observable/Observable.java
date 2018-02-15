@@ -18,7 +18,7 @@
 package com.torchmind.observable;
 
 import java.util.function.Consumer;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Represents a property of a complex (or possibly wrapped) type which is capable of inheriting its
@@ -31,7 +31,7 @@ public interface Observable<V> extends ReadOnlyObservable<V> {
   /**
    * Converts this observable into a standard Java consumer.
    */
-  @Nonnull
+  @NonNull
   default Consumer<V> asConsumer() {
     return this::set;
   }
@@ -66,7 +66,7 @@ public interface Observable<V> extends ReadOnlyObservable<V> {
    *
    * @throws IllegalStateException when this method is currently part of another binding.
    */
-  void bindTo(@Nonnull ReadOnlyObservable<? extends V> observable);
+  void bindTo(@NonNull ReadOnlyObservable<? extends V> observable);
 
   /**
    * <p>Enables sharing of the very same value on this and the supplied observable.</p>
@@ -77,7 +77,7 @@ public interface Observable<V> extends ReadOnlyObservable<V> {
    * @throws IllegalStateException when this method is currently part of another unidirectional
    * binding.
    */
-  void bindBidirectionallyTo(@Nonnull Observable<V> observable);
+  void bindBidirectionallyTo(@NonNull Observable<V> observable);
 
   /**
    * Evaluates whether this observable is bound to another observable either uni- or
@@ -89,12 +89,12 @@ public interface Observable<V> extends ReadOnlyObservable<V> {
    * Evaluates whether this observable is bound to the supplied observable (e.g. it is a heir of the
    * supplied observable).
    */
-  boolean isBoundTo(@Nonnull ReadOnlyObservable<? extends V> observable);
+  boolean isBoundTo(@NonNull ReadOnlyObservable<? extends V> observable);
 
   /**
    * Evaluates whether this observable is bound to the supplied observable bidirectionally.
    */
-  boolean isBoundBidirectionallyTo(@Nonnull Observable<V> observable);
+  boolean isBoundBidirectionallyTo(@NonNull Observable<V> observable);
 
   /**
    * Evaluates whether this observable is bound to one or more observables using a bidirectional (
@@ -130,5 +130,5 @@ public interface Observable<V> extends ReadOnlyObservable<V> {
    *
    * @throws IllegalStateException when no matching binding is present.
    */
-  void unbindBidirectional(@Nonnull Observable<V> observable);
+  void unbindBidirectional(@NonNull Observable<V> observable);
 }

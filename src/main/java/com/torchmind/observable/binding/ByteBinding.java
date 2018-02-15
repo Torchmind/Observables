@@ -22,7 +22,7 @@ import com.torchmind.observable.primitive.ReadOnlyByteObservable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.function.Supplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a base to byte valued bindings.
@@ -38,8 +38,8 @@ public interface ByteBinding extends NumberBinding<Byte>, ReadOnlyByteObservable
    * most cases, however, the static methods provided by this interface do suffice however and
    * require far less manually programmed logic.</p>
    */
-  @Nonnull
-  static ByteBinding create(@Nonnull Supplier<Byte> supplier,
+  @NonNull
+  static ByteBinding create(@NonNull Supplier<Byte> supplier,
       ReadOnlyObservable<?>... observables) {
     return new AbstractByteBinding(new HashSet<>(Arrays.asList(observables))) {
       @Override

@@ -22,7 +22,7 @@ import com.torchmind.observable.primitive.ReadOnlyIntegerObservable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.function.IntSupplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a base to integer valued bindings.
@@ -38,8 +38,8 @@ public interface IntegerBinding extends NumberBinding<Integer>, ReadOnlyIntegerO
    * most cases, however, the static methods provided by this interface do suffice however and
    * require far less manually programmed logic.</p>
    */
-  @Nonnull
-  static IntegerBinding create(@Nonnull IntSupplier supplier,
+  @NonNull
+  static IntegerBinding create(@NonNull IntSupplier supplier,
       ReadOnlyObservable<?>... observables) {
     return new AbstractIntegerBinding(new HashSet<>(Arrays.asList(observables))) {
       @Override

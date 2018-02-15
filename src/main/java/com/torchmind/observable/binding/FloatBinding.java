@@ -22,7 +22,7 @@ import com.torchmind.observable.primitive.ReadOnlyFloatObservable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.function.Supplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a base to float valued bindings.
@@ -38,8 +38,8 @@ public interface FloatBinding extends NumberBinding<Float>, ReadOnlyFloatObserva
    * most cases, however, the static methods provided by this interface do suffice however and
    * require far less manually programmed logic.</p>
    */
-  @Nonnull
-  static FloatBinding create(@Nonnull Supplier<Float> supplier,
+  @NonNull
+  static FloatBinding create(@NonNull Supplier<Float> supplier,
       ReadOnlyObservable<?>... observables) {
     return new AbstractFloatBinding(new HashSet<>(Arrays.asList(observables))) {
       @Override

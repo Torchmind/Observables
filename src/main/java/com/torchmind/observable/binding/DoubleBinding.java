@@ -22,7 +22,7 @@ import com.torchmind.observable.primitive.ReadOnlyDoubleObservable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.function.DoubleSupplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a base to double valued bindings.
@@ -38,8 +38,8 @@ public interface DoubleBinding extends NumberBinding<Double>, ReadOnlyDoubleObse
    * most cases, however, the static methods provided by this interface do suffice however and
    * require far less manually programmed logic.</p>
    */
-  @Nonnull
-  static DoubleBinding create(@Nonnull DoubleSupplier supplier,
+  @NonNull
+  static DoubleBinding create(@NonNull DoubleSupplier supplier,
       ReadOnlyObservable<?>... observables) {
     return new AbstractDoubleBinding(new HashSet<>(Arrays.asList(observables))) {
       @Override

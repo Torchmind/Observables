@@ -18,7 +18,7 @@
 package com.torchmind.observable.primitive;
 
 import java.util.function.DoubleConsumer;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a observable implementation which simplifies access to double values.
@@ -30,7 +30,7 @@ public interface DoubleObservable extends NumberObservable<Double>, ReadOnlyDoub
   /**
    * Converts this observable into a standard Java consumer.
    */
-  @Nonnull
+  @NonNull
   default DoubleConsumer asDoubleConsumer() {
     return this::setValue;
   }

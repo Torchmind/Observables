@@ -23,7 +23,7 @@ import com.torchmind.observable.listener.ChangeListener;
 import java.util.Collections;
 import java.util.Set;
 import java.util.function.Supplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides an abstract implementation for bindings.
@@ -37,7 +37,7 @@ abstract class AbstractBinding<V> extends AbstractObservable<V> implements Bindi
   private final ChangeListener<Object> changeListener = (property, oldValue, newValue) -> this
       .invalidate();
 
-  AbstractBinding(@Nonnull Set<ReadOnlyObservable<?>> dependencies) {
+  AbstractBinding(@NonNull Set<ReadOnlyObservable<?>> dependencies) {
     this.dependencies = dependencies;
     dependencies.forEach((d) -> d.registerListener(this.changeListener));
   }
@@ -45,7 +45,7 @@ abstract class AbstractBinding<V> extends AbstractObservable<V> implements Bindi
   /**
    * {@inheritDoc}
    */
-  @Nonnull
+  @NonNull
   @Override
   public Supplier<V> asSupplier() {
     return this::get;
@@ -59,7 +59,7 @@ abstract class AbstractBinding<V> extends AbstractObservable<V> implements Bindi
   /**
    * {@inheritDoc}
    */
-  @Nonnull
+  @NonNull
   @Override
   public Set<ReadOnlyObservable<?>> getDependencies() {
     return Collections.unmodifiableSet(this.dependencies);

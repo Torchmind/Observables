@@ -24,7 +24,7 @@ import com.torchmind.observable.primitive.ReadOnlyIntegerObservable;
 import com.torchmind.observable.primitive.ReadOnlyLongObservable;
 import com.torchmind.observable.primitive.ReadOnlyNumberObservable;
 import com.torchmind.observable.primitive.ReadOnlyShortObservable;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a base to number valued bindings.
@@ -38,8 +38,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates an intermediate binding which casts a generic numeric value.
    */
-  @Nonnull
-  static ByteBinding toByte(@Nonnull ReadOnlyNumberObservable<?> observable) {
+  @NonNull
+  static ByteBinding toByte(@NonNull ReadOnlyNumberObservable<?> observable) {
     return ByteBinding.create(() -> {
       Number number = observable.get();
 
@@ -54,8 +54,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates an intermediate binding which casts a generic numeric value.
    */
-  @Nonnull
-  static ShortBinding toShort(@Nonnull ReadOnlyNumberObservable<?> observable) {
+  @NonNull
+  static ShortBinding toShort(@NonNull ReadOnlyNumberObservable<?> observable) {
     return ShortBinding.create(() -> {
       Number number = observable.get();
 
@@ -70,8 +70,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates an intermediate binding which casts a generic numeric value.
    */
-  @Nonnull
-  static IntegerBinding toInteger(@Nonnull ReadOnlyNumberObservable<?> observable) {
+  @NonNull
+  static IntegerBinding toInteger(@NonNull ReadOnlyNumberObservable<?> observable) {
     return IntegerBinding.create(() -> {
       Number number = observable.get();
 
@@ -86,8 +86,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates an intermediate binding which casts a generic numeric value.
    */
-  @Nonnull
-  static LongBinding toLong(@Nonnull ReadOnlyNumberObservable<?> observable) {
+  @NonNull
+  static LongBinding toLong(@NonNull ReadOnlyNumberObservable<?> observable) {
     return LongBinding.create(() -> {
       Number number = observable.get();
 
@@ -102,8 +102,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates an intermediate binding which casts a generic numeric value.
    */
-  @Nonnull
-  static FloatBinding toFloat(@Nonnull ReadOnlyNumberObservable<?> observable) {
+  @NonNull
+  static FloatBinding toFloat(@NonNull ReadOnlyNumberObservable<?> observable) {
     return FloatBinding.create(() -> {
       Number number = observable.get();
 
@@ -118,8 +118,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates an intermediate binding which casts a generic numeric value.
    */
-  @Nonnull
-  static DoubleBinding toDouble(@Nonnull ReadOnlyNumberObservable<?> observable) {
+  @NonNull
+  static DoubleBinding toDouble(@NonNull ReadOnlyNumberObservable<?> observable) {
     return DoubleBinding.create(() -> {
       Number number = observable.get();
 
@@ -139,9 +139,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    * <p>When two values of different primitive number types are passed, the bigger or more precise
    * value is returned (for example when integer and byte are passed integer is returned).</p>
    */
-  @Nonnull
-  static NumberBinding<?> add(@Nonnull ReadOnlyNumberObservable<?> observable1,
-      @Nonnull ReadOnlyNumberObservable<?> observable2) {
+  @NonNull
+  static NumberBinding<?> add(@NonNull ReadOnlyNumberObservable<?> observable1,
+      @NonNull ReadOnlyNumberObservable<?> observable2) {
     // Floating Points
     if (observable1 instanceof ReadOnlyDoubleObservable
         || observable2 instanceof ReadOnlyDoubleObservable) {
@@ -260,9 +260,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Adds the values of two integer properties together.
    */
-  @Nonnull
-  static IntegerBinding add(@Nonnull ReadOnlyByteObservable observable1,
-      @Nonnull ReadOnlyByteObservable observable2) {
+  @NonNull
+  static IntegerBinding add(@NonNull ReadOnlyByteObservable observable1,
+      @NonNull ReadOnlyByteObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() + observable2.getValue(), observable1, observable2);
   }
@@ -270,9 +270,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Adds the values of two short properties together.
    */
-  @Nonnull
-  static IntegerBinding add(@Nonnull ReadOnlyShortObservable observable1,
-      @Nonnull ReadOnlyShortObservable observable2) {
+  @NonNull
+  static IntegerBinding add(@NonNull ReadOnlyShortObservable observable1,
+      @NonNull ReadOnlyShortObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() + observable2.getValue(), observable1, observable2);
   }
@@ -280,9 +280,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Adds the values of two integer properties together.
    */
-  @Nonnull
-  static IntegerBinding add(@Nonnull ReadOnlyIntegerObservable observable1,
-      @Nonnull ReadOnlyIntegerObservable observable2) {
+  @NonNull
+  static IntegerBinding add(@NonNull ReadOnlyIntegerObservable observable1,
+      @NonNull ReadOnlyIntegerObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() + observable2.getValue(), observable1, observable2);
   }
@@ -290,9 +290,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Adds the values of two long properties together.
    */
-  @Nonnull
-  static LongBinding add(@Nonnull ReadOnlyLongObservable observable1,
-      @Nonnull ReadOnlyLongObservable observable2) {
+  @NonNull
+  static LongBinding add(@NonNull ReadOnlyLongObservable observable1,
+      @NonNull ReadOnlyLongObservable observable2) {
     return LongBinding
         .create(() -> observable1.getValue() + observable2.getValue(), observable1, observable2);
   }
@@ -300,9 +300,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Adds the values of two float properties.
    */
-  @Nonnull
-  static FloatBinding add(@Nonnull ReadOnlyFloatObservable observable1,
-      @Nonnull ReadOnlyFloatObservable observable2) {
+  @NonNull
+  static FloatBinding add(@NonNull ReadOnlyFloatObservable observable1,
+      @NonNull ReadOnlyFloatObservable observable2) {
     return FloatBinding
         .create(() -> observable1.getValue() + observable2.getValue(), observable1, observable2);
   }
@@ -310,9 +310,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Adds the values of two double properties.
    */
-  @Nonnull
-  static DoubleBinding add(@Nonnull ReadOnlyDoubleObservable observable1,
-      @Nonnull ReadOnlyDoubleObservable observable2) {
+  @NonNull
+  static DoubleBinding add(@NonNull ReadOnlyDoubleObservable observable1,
+      @NonNull ReadOnlyDoubleObservable observable2) {
     return DoubleBinding
         .create(() -> observable1.getValue() + observable2.getValue(), observable1, observable2);
   }
@@ -325,9 +325,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    * <p>When two values of different primitive number types are passed, the bigger or more precise
    * value is returned (for example when integer and byte are passed integer is returned).</p>
    */
-  @Nonnull
-  static NumberBinding<?> subtract(@Nonnull ReadOnlyNumberObservable<?> observable1,
-      @Nonnull ReadOnlyNumberObservable<?> observable2) {
+  @NonNull
+  static NumberBinding<?> subtract(@NonNull ReadOnlyNumberObservable<?> observable1,
+      @NonNull ReadOnlyNumberObservable<?> observable2) {
     // Floating Points
     if (observable1 instanceof ReadOnlyDoubleObservable
         || observable2 instanceof ReadOnlyDoubleObservable) {
@@ -446,9 +446,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Subtracts the values of two integer properties together.
    */
-  @Nonnull
-  static IntegerBinding subtract(@Nonnull ReadOnlyByteObservable observable1,
-      @Nonnull ReadOnlyByteObservable observable2) {
+  @NonNull
+  static IntegerBinding subtract(@NonNull ReadOnlyByteObservable observable1,
+      @NonNull ReadOnlyByteObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() - observable2.getValue(), observable1, observable2);
   }
@@ -456,9 +456,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Subtracts the values of two short properties together.
    */
-  @Nonnull
-  static IntegerBinding subtract(@Nonnull ReadOnlyShortObservable observable1,
-      @Nonnull ReadOnlyShortObservable observable2) {
+  @NonNull
+  static IntegerBinding subtract(@NonNull ReadOnlyShortObservable observable1,
+      @NonNull ReadOnlyShortObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() - observable2.getValue(), observable1, observable2);
   }
@@ -466,9 +466,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Subtracts the values of two integer properties together.
    */
-  @Nonnull
-  static IntegerBinding subtract(@Nonnull ReadOnlyIntegerObservable observable1,
-      @Nonnull ReadOnlyIntegerObservable observable2) {
+  @NonNull
+  static IntegerBinding subtract(@NonNull ReadOnlyIntegerObservable observable1,
+      @NonNull ReadOnlyIntegerObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() - observable2.getValue(), observable1, observable2);
   }
@@ -476,9 +476,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Subtracts the values of two long properties together.
    */
-  @Nonnull
-  static LongBinding subtract(@Nonnull ReadOnlyLongObservable observable1,
-      @Nonnull ReadOnlyLongObservable observable2) {
+  @NonNull
+  static LongBinding subtract(@NonNull ReadOnlyLongObservable observable1,
+      @NonNull ReadOnlyLongObservable observable2) {
     return LongBinding
         .create(() -> observable1.getValue() - observable2.getValue(), observable1, observable2);
   }
@@ -486,9 +486,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Subtracts the values of two float properties.
    */
-  @Nonnull
-  static FloatBinding subtract(@Nonnull ReadOnlyFloatObservable observable1,
-      @Nonnull ReadOnlyFloatObservable observable2) {
+  @NonNull
+  static FloatBinding subtract(@NonNull ReadOnlyFloatObservable observable1,
+      @NonNull ReadOnlyFloatObservable observable2) {
     return FloatBinding
         .create(() -> observable1.getValue() - observable2.getValue(), observable1, observable2);
   }
@@ -496,9 +496,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Subtracts the values of two double properties.
    */
-  @Nonnull
-  static DoubleBinding subtract(@Nonnull ReadOnlyDoubleObservable observable1,
-      @Nonnull ReadOnlyDoubleObservable observable2) {
+  @NonNull
+  static DoubleBinding subtract(@NonNull ReadOnlyDoubleObservable observable1,
+      @NonNull ReadOnlyDoubleObservable observable2) {
     return DoubleBinding
         .create(() -> observable1.getValue() - observable2.getValue(), observable1, observable2);
   }
@@ -511,9 +511,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    * <p>When two values of different primitive number types are passed, the bigger or more precise
    * value is returned (for example when integer and byte are passed integer is returned).</p>
    */
-  @Nonnull
-  static NumberBinding<?> multiply(@Nonnull ReadOnlyNumberObservable<?> observable1,
-      @Nonnull ReadOnlyNumberObservable<?> observable2) {
+  @NonNull
+  static NumberBinding<?> multiply(@NonNull ReadOnlyNumberObservable<?> observable1,
+      @NonNull ReadOnlyNumberObservable<?> observable2) {
     // Floating Points
     if (observable1 instanceof ReadOnlyDoubleObservable
         || observable2 instanceof ReadOnlyDoubleObservable) {
@@ -632,9 +632,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Multiplies the values of two integer properties together.
    */
-  @Nonnull
-  static IntegerBinding multiply(@Nonnull ReadOnlyByteObservable observable1,
-      @Nonnull ReadOnlyByteObservable observable2) {
+  @NonNull
+  static IntegerBinding multiply(@NonNull ReadOnlyByteObservable observable1,
+      @NonNull ReadOnlyByteObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() * observable2.getValue(), observable1, observable2);
   }
@@ -642,9 +642,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Multiplies the values of two short properties together.
    */
-  @Nonnull
-  static IntegerBinding multiply(@Nonnull ReadOnlyShortObservable observable1,
-      @Nonnull ReadOnlyShortObservable observable2) {
+  @NonNull
+  static IntegerBinding multiply(@NonNull ReadOnlyShortObservable observable1,
+      @NonNull ReadOnlyShortObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() * observable2.getValue(), observable1, observable2);
   }
@@ -652,9 +652,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Multiplies the values of two integer properties together.
    */
-  @Nonnull
-  static IntegerBinding multiply(@Nonnull ReadOnlyIntegerObservable observable1,
-      @Nonnull ReadOnlyIntegerObservable observable2) {
+  @NonNull
+  static IntegerBinding multiply(@NonNull ReadOnlyIntegerObservable observable1,
+      @NonNull ReadOnlyIntegerObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() * observable2.getValue(), observable1, observable2);
   }
@@ -662,9 +662,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Multiplies the values of two long properties together.
    */
-  @Nonnull
-  static LongBinding multiply(@Nonnull ReadOnlyLongObservable observable1,
-      @Nonnull ReadOnlyLongObservable observable2) {
+  @NonNull
+  static LongBinding multiply(@NonNull ReadOnlyLongObservable observable1,
+      @NonNull ReadOnlyLongObservable observable2) {
     return LongBinding
         .create(() -> observable1.getValue() * observable2.getValue(), observable1, observable2);
   }
@@ -672,9 +672,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Multiplies the values of two float properties.
    */
-  @Nonnull
-  static FloatBinding multiply(@Nonnull ReadOnlyFloatObservable observable1,
-      @Nonnull ReadOnlyFloatObservable observable2) {
+  @NonNull
+  static FloatBinding multiply(@NonNull ReadOnlyFloatObservable observable1,
+      @NonNull ReadOnlyFloatObservable observable2) {
     return FloatBinding
         .create(() -> observable1.getValue() * observable2.getValue(), observable1, observable2);
   }
@@ -682,9 +682,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Multiplies the values of two double properties.
    */
-  @Nonnull
-  static DoubleBinding multiply(@Nonnull ReadOnlyDoubleObservable observable1,
-      @Nonnull ReadOnlyDoubleObservable observable2) {
+  @NonNull
+  static DoubleBinding multiply(@NonNull ReadOnlyDoubleObservable observable1,
+      @NonNull ReadOnlyDoubleObservable observable2) {
     return DoubleBinding
         .create(() -> observable1.getValue() * observable2.getValue(), observable1, observable2);
   }
@@ -697,9 +697,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    * <p>When two values of different primitive number types are passed, the bigger or more precise
    * value is returned (for example when integer and byte are passed integer is returned).</p>
    */
-  @Nonnull
-  static NumberBinding<?> divide(@Nonnull ReadOnlyNumberObservable<?> observable1,
-      @Nonnull ReadOnlyNumberObservable<?> observable2) {
+  @NonNull
+  static NumberBinding<?> divide(@NonNull ReadOnlyNumberObservable<?> observable1,
+      @NonNull ReadOnlyNumberObservable<?> observable2) {
     // Floating Points
     if (observable1 instanceof ReadOnlyDoubleObservable
         || observable2 instanceof ReadOnlyDoubleObservable) {
@@ -818,9 +818,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Divides the values of two integer properties together.
    */
-  @Nonnull
-  static IntegerBinding divide(@Nonnull ReadOnlyByteObservable observable1,
-      @Nonnull ReadOnlyByteObservable observable2) {
+  @NonNull
+  static IntegerBinding divide(@NonNull ReadOnlyByteObservable observable1,
+      @NonNull ReadOnlyByteObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() / observable2.getValue(), observable1, observable2);
   }
@@ -828,9 +828,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Divides the values of two short properties together.
    */
-  @Nonnull
-  static IntegerBinding divide(@Nonnull ReadOnlyShortObservable observable1,
-      @Nonnull ReadOnlyShortObservable observable2) {
+  @NonNull
+  static IntegerBinding divide(@NonNull ReadOnlyShortObservable observable1,
+      @NonNull ReadOnlyShortObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() / observable2.getValue(), observable1, observable2);
   }
@@ -838,9 +838,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Divides the values of two integer properties together.
    */
-  @Nonnull
-  static IntegerBinding divide(@Nonnull ReadOnlyIntegerObservable observable1,
-      @Nonnull ReadOnlyIntegerObservable observable2) {
+  @NonNull
+  static IntegerBinding divide(@NonNull ReadOnlyIntegerObservable observable1,
+      @NonNull ReadOnlyIntegerObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() / observable2.getValue(), observable1, observable2);
   }
@@ -848,9 +848,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Divides the values of two long properties together.
    */
-  @Nonnull
-  static LongBinding divide(@Nonnull ReadOnlyLongObservable observable1,
-      @Nonnull ReadOnlyLongObservable observable2) {
+  @NonNull
+  static LongBinding divide(@NonNull ReadOnlyLongObservable observable1,
+      @NonNull ReadOnlyLongObservable observable2) {
     return LongBinding
         .create(() -> observable1.getValue() / observable2.getValue(), observable1, observable2);
   }
@@ -858,9 +858,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Divides the values of two float properties.
    */
-  @Nonnull
-  static FloatBinding divide(@Nonnull ReadOnlyFloatObservable observable1,
-      @Nonnull ReadOnlyFloatObservable observable2) {
+  @NonNull
+  static FloatBinding divide(@NonNull ReadOnlyFloatObservable observable1,
+      @NonNull ReadOnlyFloatObservable observable2) {
     return FloatBinding
         .create(() -> observable1.getValue() / observable2.getValue(), observable1, observable2);
   }
@@ -868,9 +868,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Divides the values of two double properties.
    */
-  @Nonnull
-  static DoubleBinding divide(@Nonnull ReadOnlyDoubleObservable observable1,
-      @Nonnull ReadOnlyDoubleObservable observable2) {
+  @NonNull
+  static DoubleBinding divide(@NonNull ReadOnlyDoubleObservable observable1,
+      @NonNull ReadOnlyDoubleObservable observable2) {
     return DoubleBinding
         .create(() -> observable1.getValue() / observable2.getValue(), observable1, observable2);
   }
@@ -883,9 +883,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
    * <p>When two values of different primitive number types are passed, the bigger or more precise
    * value is returned (for example when integer and byte are passed integer is returned).</p>
    */
-  @Nonnull
-  static NumberBinding<?> modulus(@Nonnull ReadOnlyNumberObservable<?> observable1,
-      @Nonnull ReadOnlyNumberObservable<?> observable2) {
+  @NonNull
+  static NumberBinding<?> modulus(@NonNull ReadOnlyNumberObservable<?> observable1,
+      @NonNull ReadOnlyNumberObservable<?> observable2) {
     // Floating Points
     if (observable1 instanceof ReadOnlyDoubleObservable
         || observable2 instanceof ReadOnlyDoubleObservable) {
@@ -1004,9 +1004,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Calculates the remainder of a division between two integer properties.
    */
-  @Nonnull
-  static IntegerBinding modulus(@Nonnull ReadOnlyByteObservable observable1,
-      @Nonnull ReadOnlyByteObservable observable2) {
+  @NonNull
+  static IntegerBinding modulus(@NonNull ReadOnlyByteObservable observable1,
+      @NonNull ReadOnlyByteObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() % observable2.getValue(), observable1, observable2);
   }
@@ -1014,9 +1014,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Calculates the remainder of a division between two short properties.
    */
-  @Nonnull
-  static IntegerBinding modulus(@Nonnull ReadOnlyShortObservable observable1,
-      @Nonnull ReadOnlyShortObservable observable2) {
+  @NonNull
+  static IntegerBinding modulus(@NonNull ReadOnlyShortObservable observable1,
+      @NonNull ReadOnlyShortObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() % observable2.getValue(), observable1, observable2);
   }
@@ -1024,9 +1024,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Calculates the remainder of a division between two integer properties.
    */
-  @Nonnull
-  static IntegerBinding modulus(@Nonnull ReadOnlyIntegerObservable observable1,
-      @Nonnull ReadOnlyIntegerObservable observable2) {
+  @NonNull
+  static IntegerBinding modulus(@NonNull ReadOnlyIntegerObservable observable1,
+      @NonNull ReadOnlyIntegerObservable observable2) {
     return IntegerBinding
         .create(() -> observable1.getValue() % observable2.getValue(), observable1, observable2);
   }
@@ -1034,9 +1034,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Calculates the remainder of a division between two long properties.
    */
-  @Nonnull
-  static LongBinding modulus(@Nonnull ReadOnlyLongObservable observable1,
-      @Nonnull ReadOnlyLongObservable observable2) {
+  @NonNull
+  static LongBinding modulus(@NonNull ReadOnlyLongObservable observable1,
+      @NonNull ReadOnlyLongObservable observable2) {
     return LongBinding
         .create(() -> observable1.getValue() % observable2.getValue(), observable1, observable2);
   }
@@ -1044,9 +1044,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Calculates the remainder of a division between two float properties.
    */
-  @Nonnull
-  static FloatBinding modulus(@Nonnull ReadOnlyFloatObservable observable1,
-      @Nonnull ReadOnlyFloatObservable observable2) {
+  @NonNull
+  static FloatBinding modulus(@NonNull ReadOnlyFloatObservable observable1,
+      @NonNull ReadOnlyFloatObservable observable2) {
     return FloatBinding
         .create(() -> observable1.getValue() % observable2.getValue(), observable1, observable2);
   }
@@ -1054,9 +1054,9 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Calculates the remainder of a division between two double properties.
    */
-  @Nonnull
-  static DoubleBinding modulus(@Nonnull ReadOnlyDoubleObservable observable1,
-      @Nonnull ReadOnlyDoubleObservable observable2) {
+  @NonNull
+  static DoubleBinding modulus(@NonNull ReadOnlyDoubleObservable observable1,
+      @NonNull ReadOnlyDoubleObservable observable2) {
     return DoubleBinding
         .create(() -> observable1.getValue() % observable2.getValue(), observable1, observable2);
   }
@@ -1066,208 +1066,208 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Rounds off the value of the supplied float property.
    */
-  @Nonnull
-  static DoubleBinding floor(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static DoubleBinding floor(@NonNull ReadOnlyFloatObservable observable) {
     return DoubleBinding.create(() -> Math.floor(observable.getValue()), observable);
   }
 
   /**
    * Rounds off the value of the supplied double property.
    */
-  @Nonnull
-  static DoubleBinding floor(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static DoubleBinding floor(@NonNull ReadOnlyDoubleObservable observable) {
     return DoubleBinding.create(() -> Math.floor(observable.getValue()), observable);
   }
 
   /**
    * Rounds off the value of the supplied float property to the closest full byte value.
    */
-  @Nonnull
-  static ByteBinding floorToByte(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static ByteBinding floorToByte(@NonNull ReadOnlyFloatObservable observable) {
     return ByteBinding.create(() -> (byte) Math.floor(observable.getValue()), observable);
   }
 
   /**
    * Rounds off the value of the supplied double property to the closest full byte value.
    */
-  @Nonnull
-  static ByteBinding floorToByte(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static ByteBinding floorToByte(@NonNull ReadOnlyDoubleObservable observable) {
     return ByteBinding.create(() -> (byte) Math.floor(observable.getValue()), observable);
   }
 
   /**
    * Rounds off the value of the supplied float property to the closest full short value.
    */
-  @Nonnull
-  static ShortBinding floorToShort(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static ShortBinding floorToShort(@NonNull ReadOnlyFloatObservable observable) {
     return ShortBinding.create(() -> (short) Math.floor(observable.getValue()), observable);
   }
 
   /**
    * Rounds off the value of the supplied double property to the closest full short value.
    */
-  @Nonnull
-  static ShortBinding floorToShort(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static ShortBinding floorToShort(@NonNull ReadOnlyDoubleObservable observable) {
     return ShortBinding.create(() -> (short) Math.floor(observable.getValue()), observable);
   }
 
   /**
    * Rounds off the value of the supplied float property to the closest full integer value.
    */
-  @Nonnull
-  static IntegerBinding floorToInteger(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static IntegerBinding floorToInteger(@NonNull ReadOnlyFloatObservable observable) {
     return IntegerBinding.create(() -> (int) Math.floor(observable.getValue()), observable);
   }
 
   /**
    * Rounds off the value of the supplied double property to the closest full integer value.
    */
-  @Nonnull
-  static IntegerBinding floorToInteger(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static IntegerBinding floorToInteger(@NonNull ReadOnlyDoubleObservable observable) {
     return IntegerBinding.create(() -> (int) Math.floor(observable.getValue()), observable);
   }
 
   /**
    * Rounds off the value of the supplied float property to the closest full long value.
    */
-  @Nonnull
-  static LongBinding floorToLong(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static LongBinding floorToLong(@NonNull ReadOnlyFloatObservable observable) {
     return LongBinding.create(() -> (long) Math.floor(observable.getValue()), observable);
   }
 
   /**
    * Rounds off the value of the supplied double property to the closest full long value.
    */
-  @Nonnull
-  static LongBinding floorToLong(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static LongBinding floorToLong(@NonNull ReadOnlyDoubleObservable observable) {
     return LongBinding.create(() -> (long) Math.floor(observable.getValue()), observable);
   }
 
   /**
    * Rounds up the value of the supplied float property.
    */
-  @Nonnull
-  static DoubleBinding ceil(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static DoubleBinding ceil(@NonNull ReadOnlyFloatObservable observable) {
     return DoubleBinding.create(() -> Math.ceil(observable.getValue()), observable);
   }
 
   /**
    * Rounds up the value of the supplied double property.
    */
-  @Nonnull
-  static DoubleBinding ceil(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static DoubleBinding ceil(@NonNull ReadOnlyDoubleObservable observable) {
     return DoubleBinding.create(() -> Math.ceil(observable.getValue()), observable);
   }
 
   /**
    * Rounds up the value of the supplied float property to the closest full byte value.
    */
-  @Nonnull
-  static ByteBinding ceilToByte(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static ByteBinding ceilToByte(@NonNull ReadOnlyFloatObservable observable) {
     return ByteBinding.create(() -> (byte) Math.ceil(observable.getValue()), observable);
   }
 
   /**
    * Rounds up the value of the supplied double property to the closest full byte value.
    */
-  @Nonnull
-  static ByteBinding ceilToByte(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static ByteBinding ceilToByte(@NonNull ReadOnlyDoubleObservable observable) {
     return ByteBinding.create(() -> (byte) Math.ceil(observable.getValue()), observable);
   }
 
   /**
    * Rounds up the value of the supplied float property to the closest full short value.
    */
-  @Nonnull
-  static ShortBinding ceilToShort(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static ShortBinding ceilToShort(@NonNull ReadOnlyFloatObservable observable) {
     return ShortBinding.create(() -> (short) Math.ceil(observable.getValue()), observable);
   }
 
   /**
    * Rounds up the value of the supplied double property to the closest full short value.
    */
-  @Nonnull
-  static ShortBinding ceilToShort(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static ShortBinding ceilToShort(@NonNull ReadOnlyDoubleObservable observable) {
     return ShortBinding.create(() -> (short) Math.ceil(observable.getValue()), observable);
   }
 
   /**
    * Rounds up the value of the supplied float property to the closest full integer value.
    */
-  @Nonnull
-  static IntegerBinding ceilToInteger(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static IntegerBinding ceilToInteger(@NonNull ReadOnlyFloatObservable observable) {
     return IntegerBinding.create(() -> (int) Math.ceil(observable.getValue()), observable);
   }
 
   /**
    * Rounds up the value of the supplied double property to the closest full integer value.
    */
-  @Nonnull
-  static IntegerBinding ceilToInteger(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static IntegerBinding ceilToInteger(@NonNull ReadOnlyDoubleObservable observable) {
     return IntegerBinding.create(() -> (int) Math.ceil(observable.getValue()), observable);
   }
 
   /**
    * Rounds up the value of the supplied float property to the closest full long value.
    */
-  @Nonnull
-  static LongBinding ceilToLong(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static LongBinding ceilToLong(@NonNull ReadOnlyFloatObservable observable) {
     return LongBinding.create(() -> (long) Math.ceil(observable.getValue()), observable);
   }
 
   /**
    * Rounds up the value of the supplied double property to the closest full long value.
    */
-  @Nonnull
-  static LongBinding ceilToLong(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static LongBinding ceilToLong(@NonNull ReadOnlyDoubleObservable observable) {
     return LongBinding.create(() -> (long) Math.ceil(observable.getValue()), observable);
   }
 
   /**
    * Rounds the value of the supplied float property.
    */
-  @Nonnull
-  static IntegerBinding round(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static IntegerBinding round(@NonNull ReadOnlyFloatObservable observable) {
     return IntegerBinding.create(() -> Math.round(observable.getValue()), observable);
   }
 
   /**
    * Rounds the value of the supplied double property.
    */
-  @Nonnull
-  static LongBinding round(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static LongBinding round(@NonNull ReadOnlyDoubleObservable observable) {
     return LongBinding.create(() -> Math.round(observable.getValue()), observable);
   }
 
   /**
    * Rounds the value of the supplied float property to the closest full byte value.
    */
-  @Nonnull
-  static ByteBinding roundToByte(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static ByteBinding roundToByte(@NonNull ReadOnlyFloatObservable observable) {
     return ByteBinding.create(() -> (byte) Math.round(observable.getValue()), observable);
   }
 
   /**
    * Rounds the value of the supplied double property to the closest full byte value.
    */
-  @Nonnull
-  static ByteBinding roundToByte(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static ByteBinding roundToByte(@NonNull ReadOnlyDoubleObservable observable) {
     return ByteBinding.create(() -> (byte) Math.round(observable.getValue()), observable);
   }
 
   /**
    * Rounds the value of the supplied float property to the closest full short value.
    */
-  @Nonnull
-  static ShortBinding roundToShort(@Nonnull ReadOnlyFloatObservable observable) {
+  @NonNull
+  static ShortBinding roundToShort(@NonNull ReadOnlyFloatObservable observable) {
     return ShortBinding.create(() -> (short) Math.round(observable.getValue()), observable);
   }
 
   /**
    * Rounds the value of the supplied double property to the closest full short value.
    */
-  @Nonnull
-  static ShortBinding roundToShort(@Nonnull ReadOnlyDoubleObservable observable) {
+  @NonNull
+  static ShortBinding roundToShort(@NonNull ReadOnlyDoubleObservable observable) {
     return ShortBinding.create(() -> (short) Math.round(observable.getValue()), observable);
   }
 
@@ -1276,8 +1276,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the smallest value of all passed observables.
    */
-  @Nonnull
-  static ByteBinding min(@Nonnull ReadOnlyByteObservable... observables) {
+  @NonNull
+  static ByteBinding min(@NonNull ReadOnlyByteObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1297,8 +1297,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the biggest value of all passed observables.
    */
-  @Nonnull
-  static ByteBinding max(@Nonnull ReadOnlyByteObservable... observables) {
+  @NonNull
+  static ByteBinding max(@NonNull ReadOnlyByteObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1318,8 +1318,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the smallest value of all passed observables.
    */
-  @Nonnull
-  static ShortBinding min(@Nonnull ReadOnlyShortObservable... observables) {
+  @NonNull
+  static ShortBinding min(@NonNull ReadOnlyShortObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1339,8 +1339,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the biggest value of all passed observables.
    */
-  @Nonnull
-  static ShortBinding max(@Nonnull ReadOnlyShortObservable... observables) {
+  @NonNull
+  static ShortBinding max(@NonNull ReadOnlyShortObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1360,8 +1360,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the smallest value of all passed observables.
    */
-  @Nonnull
-  static IntegerBinding min(@Nonnull ReadOnlyIntegerObservable... observables) {
+  @NonNull
+  static IntegerBinding min(@NonNull ReadOnlyIntegerObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1381,8 +1381,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the biggest value of all passed observables.
    */
-  @Nonnull
-  static IntegerBinding max(@Nonnull ReadOnlyIntegerObservable... observables) {
+  @NonNull
+  static IntegerBinding max(@NonNull ReadOnlyIntegerObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1402,8 +1402,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the smallest value of all passed observables.
    */
-  @Nonnull
-  static LongBinding min(@Nonnull ReadOnlyLongObservable... observables) {
+  @NonNull
+  static LongBinding min(@NonNull ReadOnlyLongObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1423,8 +1423,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the biggest value of all passed observables.
    */
-  @Nonnull
-  static LongBinding max(@Nonnull ReadOnlyLongObservable... observables) {
+  @NonNull
+  static LongBinding max(@NonNull ReadOnlyLongObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1444,8 +1444,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the smallest value of all passed observables.
    */
-  @Nonnull
-  static FloatBinding min(@Nonnull ReadOnlyFloatObservable... observables) {
+  @NonNull
+  static FloatBinding min(@NonNull ReadOnlyFloatObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1465,8 +1465,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the biggest value of all passed observables.
    */
-  @Nonnull
-  static FloatBinding max(@Nonnull ReadOnlyFloatObservable... observables) {
+  @NonNull
+  static FloatBinding max(@NonNull ReadOnlyFloatObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1486,8 +1486,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the smallest value of all passed observables.
    */
-  @Nonnull
-  static DoubleBinding min(@Nonnull ReadOnlyDoubleObservable... observables) {
+  @NonNull
+  static DoubleBinding min(@NonNull ReadOnlyDoubleObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");
@@ -1507,8 +1507,8 @@ public interface NumberBinding<V extends Number> extends Binding<V>, ReadOnlyNum
   /**
    * Creates a binding which evaluates the biggest value of all passed observables.
    */
-  @Nonnull
-  static DoubleBinding max(@Nonnull ReadOnlyDoubleObservable... observables) {
+  @NonNull
+  static DoubleBinding max(@NonNull ReadOnlyDoubleObservable... observables) {
     if (observables.length == 0) {
       throw new IllegalArgumentException(
           "Illegal binding configuration: Expected at least one observable");

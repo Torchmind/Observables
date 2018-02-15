@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArraySet;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a set which relies on weak references to store its elements.
@@ -38,7 +38,7 @@ public class WeakCopyOnWriteSet<E> extends AbstractSet<E> {
     this.elements = new CopyOnWriteArraySet<>();
   }
 
-  public WeakCopyOnWriteSet(@Nonnull Collection<E> collection) {
+  public WeakCopyOnWriteSet(@NonNull Collection<E> collection) {
     this();
     this.addAll(collection);
   }
@@ -86,7 +86,7 @@ public class WeakCopyOnWriteSet<E> extends AbstractSet<E> {
   /**
    * {@inheritDoc}
    */
-  @Nonnull
+  @NonNull
   @Override
   public Iterator<E> iterator() {
     this.performCleanup();

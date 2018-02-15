@@ -18,7 +18,7 @@
 package com.torchmind.observable;
 
 import com.torchmind.observable.listener.ValidationListener;
-import javax.annotation.Nullable;
+import edu.umd.cs.findbugs.annotations.Nullable;
 
 /**
  * Provides a rather simple version of the observable system.

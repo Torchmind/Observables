@@ -22,7 +22,7 @@ import com.torchmind.observable.primitive.ReadOnlyShortObservable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.function.Supplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a base to short valued bindings.
@@ -38,8 +38,8 @@ public interface ShortBinding extends NumberBinding<Short>, ReadOnlyShortObserva
    * most cases, however, the static methods provided by this interface do suffice however and
    * require far less manually programmed logic.</p>
    */
-  @Nonnull
-  static ShortBinding create(@Nonnull Supplier<Short> supplier,
+  @NonNull
+  static ShortBinding create(@NonNull Supplier<Short> supplier,
       ReadOnlyObservable<?>... observables) {
     return new AbstractShortBinding(new HashSet<>(Arrays.asList(observables))) {
       @Override

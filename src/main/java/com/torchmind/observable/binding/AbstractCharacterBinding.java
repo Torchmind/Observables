@@ -19,7 +19,7 @@ package com.torchmind.observable.binding;
 
 import com.torchmind.observable.ReadOnlyObservable;
 import java.util.Set;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides an abstract character binding implementation.
@@ -30,7 +30,7 @@ abstract class AbstractCharacterBinding extends AbstractBinding<Character> imple
     CharacterBinding {
 
   public AbstractCharacterBinding(
-      @Nonnull Set<ReadOnlyObservable<?>> dependencies) {
+      @NonNull Set<ReadOnlyObservable<?>> dependencies) {
     super(dependencies);
   }
 

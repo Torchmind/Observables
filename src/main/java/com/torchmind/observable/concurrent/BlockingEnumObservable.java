@@ -18,7 +18,7 @@
 package com.torchmind.observable.concurrent;
 
 import com.torchmind.observable.listener.ValidationListener;
-import javax.annotation.Nullable;
+import edu.umd.cs.findbugs.annotations.Nullable;
 
 /**
  * Provides a thread safe but blocking version of the observable specification.

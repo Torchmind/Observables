@@ -19,7 +19,7 @@ package com.torchmind.observable.binding;
 
 import com.torchmind.observable.ReadOnlyObservable;
 import java.util.Set;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides an abstract boolean binding implementation.
@@ -29,7 +29,7 @@ import javax.annotation.Nonnull;
 abstract class AbstractBooleanBinding extends AbstractBinding<Boolean> implements BooleanBinding {
 
   public AbstractBooleanBinding(
-      @Nonnull Set<ReadOnlyObservable<?>> dependencies) {
+      @NonNull Set<ReadOnlyObservable<?>> dependencies) {
     super(dependencies);
 
     this.invalidate();
