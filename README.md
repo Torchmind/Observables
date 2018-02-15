@@ -47,7 +47,7 @@ or for snapshot (e.g. unstable) releases
   <dependency>
     <groupId>com.torchmind</groupId>
     <artifactId>observables</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
   </dependency>
 </dependencies>
 <!-- ... -->
@@ -208,6 +208,7 @@ History
 
 06/06/2017 - First designs
 06/07/2017 - Publication on GitHub
+02/15/2018 - Added Java 9 Support (Jigsaw Manifest)
 
 Credits
 -------
