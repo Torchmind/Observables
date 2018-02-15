@@ -22,7 +22,7 @@ import com.torchmind.observable.primitive.ReadOnlyLongObservable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.function.LongSupplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a base to long valued bindings.
@@ -38,8 +38,8 @@ public interface LongBinding extends NumberBinding<Long>, ReadOnlyLongObservable
    * most cases, however, the static methods provided by this interface do suffice however and
    * require far less manually programmed logic.</p>
    */
-  @Nonnull
-  static LongBinding create(@Nonnull LongSupplier supplier,
+  @NonNull
+  static LongBinding create(@NonNull LongSupplier supplier,
       ReadOnlyObservable<?>... observables) {
     return new AbstractLongBinding(new HashSet<>(Arrays.asList(observables))) {
       @Override

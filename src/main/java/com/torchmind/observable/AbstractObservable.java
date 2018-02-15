@@ -21,8 +21,8 @@ import com.torchmind.observable.listener.ChangeListener;
 import com.torchmind.observable.listener.ValidationListener;
 import java.util.HashSet;
 import java.util.Set;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import edu.umd.cs.findbugs.annotations.NonNull;
+import edu.umd.cs.findbugs.annotations.Nullable;
 
 /**
  * Provides a basic writable observable implementation which handles all the necessary logic for
@@ -125,7 +125,7 @@ public abstract class AbstractObservable<V> extends AbstractReadOnlyObservable<V
    * {@inheritDoc}
    */
   @Override
-  public void bindTo(@Nonnull ReadOnlyObservable<? extends V> observable) {
+  public void bindTo(@NonNull ReadOnlyObservable<? extends V> observable) {
     // if we are already bound to the passed observable we will simply ignore this call to avoid
     // double testing (nor is an update necessary)
     if (this.binding == observable) {
@@ -151,7 +151,7 @@ public abstract class AbstractObservable<V> extends AbstractReadOnlyObservable<V
    * {@inheritDoc}
    */
   @Override
-  public void bindBidirectionallyTo(@Nonnull Observable<V> observable) {
+  public void bindBidirectionallyTo(@NonNull Observable<V> observable) {
     if (this.binding != null) {
       throw new IllegalStateException(
           "Cannot bind to observable: Already in another binding relationship");
@@ -190,7 +190,7 @@ public abstract class AbstractObservable<V> extends AbstractReadOnlyObservable<V
    * {@inheritDoc}
    */
   @Override
-  public boolean isBoundTo(@Nonnull ReadOnlyObservable<? extends V> observable) {
+  public boolean isBoundTo(@NonNull ReadOnlyObservable<? extends V> observable) {
     return this.binding == observable;
   }
 
@@ -198,7 +198,7 @@ public abstract class AbstractObservable<V> extends AbstractReadOnlyObservable<V
    * {@inheritDoc}
    */
   @Override
-  public boolean isBoundBidirectionallyTo(@Nonnull Observable<V> observable) {
+  public boolean isBoundBidirectionallyTo(@NonNull Observable<V> observable) {
     return this.binding == null && this.bidirectionalBinding.contains(observable);
   }
 
@@ -247,7 +247,7 @@ public abstract class AbstractObservable<V> extends AbstractReadOnlyObservable<V
    * {@inheritDoc}
    */
   @Override
-  public void unbindBidirectional(@Nonnull Observable<V> observable) {
+  public void unbindBidirectional(@NonNull Observable<V> observable) {
     observable.removeListener(this.bindingListener);
     this.bidirectionalBinding.remove(observable);
 

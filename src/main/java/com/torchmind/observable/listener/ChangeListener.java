@@ -18,7 +18,7 @@
 package com.torchmind.observable.listener;
 
 import com.torchmind.observable.ReadOnlyObservable;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * <p>Provides a base to listeners which wish to execute custom logic whenever an observed value
@@ -41,5 +41,5 @@ public interface ChangeListener<V> {
    * Contains custom logic which is invoked when the observable, to which this listener is attached,
    * changes its exposed value.
    */
-  void onChange(@Nonnull ReadOnlyObservable<? extends V> property, V oldValue, V newValue);
+  void onChange(@NonNull ReadOnlyObservable<? extends V> property, V oldValue, V newValue);
 }

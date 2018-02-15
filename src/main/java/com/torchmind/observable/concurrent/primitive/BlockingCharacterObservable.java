@@ -20,7 +20,7 @@ package com.torchmind.observable.concurrent.primitive;
 import com.torchmind.observable.concurrent.AbstractBlockingObservable;
 import com.torchmind.observable.listener.ValidationListener;
 import com.torchmind.observable.primitive.CharacterObservable;
-import javax.annotation.Nullable;
+import edu.umd.cs.findbugs.annotations.Nullable;
 
 /**
  * Provides a observable implementation which simplifies access to character values.

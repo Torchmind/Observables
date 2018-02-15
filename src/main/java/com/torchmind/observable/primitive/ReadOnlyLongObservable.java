@@ -18,7 +18,7 @@
 package com.torchmind.observable.primitive;
 
 import java.util.function.LongSupplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a observable implementation which simplifies access to long values.
@@ -30,7 +30,7 @@ public interface ReadOnlyLongObservable extends ReadOnlyNumberObservable<Long> {
   /**
    * Converts this observable into a standard Java supplier.
    */
-  @Nonnull
+  @NonNull
   default LongSupplier asLongSupplier() {
     return this::getValue;
   }

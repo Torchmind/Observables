@@ -19,7 +19,7 @@ package com.torchmind.observable.binding;
 
 import com.torchmind.observable.ReadOnlyObservable;
 import java.util.Set;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides an abstract float binding implementation.
@@ -29,7 +29,7 @@ import javax.annotation.Nonnull;
 abstract class AbstractFloatBinding extends AbstractBinding<Float> implements FloatBinding {
 
   public AbstractFloatBinding(
-      @Nonnull Set<ReadOnlyObservable<?>> dependencies) {
+      @NonNull Set<ReadOnlyObservable<?>> dependencies) {
     super(dependencies);
   }
 

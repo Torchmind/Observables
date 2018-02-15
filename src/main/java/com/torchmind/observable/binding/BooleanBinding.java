@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.function.BooleanSupplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a boolean based binding.
@@ -40,8 +40,8 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
    * most cases, however, the static methods provided by this interface do suffice however and
    * require far less manually programmed logic.</p>
    */
-  @Nonnull
-  static BooleanBinding create(@Nonnull BooleanSupplier supplier,
+  @NonNull
+  static BooleanBinding create(@NonNull BooleanSupplier supplier,
       ReadOnlyObservable<?>... observables) {
     return new AbstractBooleanBinding(new HashSet<>(Arrays.asList(observables))) {
       @Override
@@ -54,8 +54,8 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Combines the two supplied boolean bindings using a binary and operation.
    */
-  @Nonnull
-  static BooleanBinding and(@Nonnull BooleanBinding a, @Nonnull BooleanBinding b) {
+  @NonNull
+  static BooleanBinding and(@NonNull BooleanBinding a, @NonNull BooleanBinding b) {
     return new AbstractBooleanBinding(new HashSet<>(Arrays.asList(a, b))) {
       @Override
       protected Boolean compute() {
@@ -67,9 +67,9 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Evaluates whether the two supplied observables are equal in value.
    */
-  @Nonnull
-  static BooleanBinding equals(@Nonnull ReadOnlyObservable<?> observable1,
-      @Nonnull ReadOnlyObservable observable2) {
+  @NonNull
+  static BooleanBinding equals(@NonNull ReadOnlyObservable<?> observable1,
+      @NonNull ReadOnlyObservable observable2) {
     return create(() -> Objects.equals(observable1.get(), observable2.get()), observable1,
         observable2);
   }
@@ -77,8 +77,8 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Combines the two supplied boolean bindings using a binary not operation.
    */
-  @Nonnull
-  static BooleanBinding not(@Nonnull BooleanBinding a) {
+  @NonNull
+  static BooleanBinding not(@NonNull BooleanBinding a) {
     return new AbstractBooleanBinding(Collections.singleton(a)) {
       @Override
       protected Boolean compute() {
@@ -90,9 +90,9 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Evaluates whether the two supplied observables are not equal in value.
    */
-  @Nonnull
-  static BooleanBinding notEquals(@Nonnull ReadOnlyObservable<?> observable1,
-      @Nonnull ReadOnlyObservable<?> observable2) {
+  @NonNull
+  static BooleanBinding notEquals(@NonNull ReadOnlyObservable<?> observable1,
+      @NonNull ReadOnlyObservable<?> observable2) {
     return create(() -> !Objects.equals(observable1.get(), observable2.get()), observable1,
         observable2);
   }
@@ -100,8 +100,8 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Combines the two supplied boolean bindings using a binary or operation.
    */
-  @Nonnull
-  static BooleanBinding or(@Nonnull BooleanBinding a, @Nonnull BooleanBinding b) {
+  @NonNull
+  static BooleanBinding or(@NonNull BooleanBinding a, @NonNull BooleanBinding b) {
     return new AbstractBooleanBinding(new HashSet<>(Arrays.asList(a, b))) {
       @Override
       protected Boolean compute() {
@@ -113,7 +113,7 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Creates a boolean binding with a static return value.
    */
-  @Nonnull
+  @NonNull
   static BooleanBinding staticValue(boolean value) {
     return new AbstractBooleanBinding(Collections.emptySet()) {
       @Override
@@ -126,8 +126,8 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Combines the two supplied boolean bindings using a binary xor operation.
    */
-  @Nonnull
-  static BooleanBinding xor(@Nonnull BooleanBinding a, @Nonnull BooleanBinding b) {
+  @NonNull
+  static BooleanBinding xor(@NonNull BooleanBinding a, @NonNull BooleanBinding b) {
     return new AbstractBooleanBinding(new HashSet<>(Arrays.asList(a, b))) {
       @Override
       protected Boolean compute() {
@@ -139,8 +139,8 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Creates a boolean binding which evaluates whether the supplied observable is not set to null.
    */
-  @Nonnull
-  static BooleanBinding notNull(@Nonnull ReadOnlyObservable<?> observable) {
+  @NonNull
+  static BooleanBinding notNull(@NonNull ReadOnlyObservable<?> observable) {
     return new AbstractBooleanBinding(Collections.singleton(observable)) {
       @Override
       protected Boolean compute() {
@@ -152,8 +152,8 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Creates a boolean binding which evaluates whether the supplied observable is set to null.
    */
-  @Nonnull
-  static BooleanBinding isNull(@Nonnull ReadOnlyObservable<?> observable) {
+  @NonNull
+  static BooleanBinding isNull(@NonNull ReadOnlyObservable<?> observable) {
     return new AbstractBooleanBinding(Collections.singleton(observable)) {
       @Override
       protected Boolean compute() {
@@ -166,8 +166,8 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
    * Wraps a binding in order to convert it into its "primitive" form (e.g. into the more specific
    * interface definition).
    */
-  @Nonnull
-  static BooleanBinding toPrimitive(@Nonnull Binding<Boolean> binding) {
+  @NonNull
+  static BooleanBinding toPrimitive(@NonNull Binding<Boolean> binding) {
     return new AbstractBooleanBinding(Collections.singleton(binding)) {
       @Override
       protected Boolean compute() {
@@ -185,15 +185,15 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Combines the outcome of this binding and the supplied binding using a logical and operation.
    */
-  @Nonnull
-  default BooleanBinding and(@Nonnull BooleanBinding binding) {
+  @NonNull
+  default BooleanBinding and(@NonNull BooleanBinding binding) {
     return and(this, binding);
   }
 
   /**
    * Negates the outcome of this binding.
    */
-  @Nonnull
+  @NonNull
   default BooleanBinding not() {
     return not(this);
   }
@@ -201,16 +201,16 @@ public interface BooleanBinding extends Binding<Boolean>, ReadOnlyBooleanObserva
   /**
    * Combines the outcome of this binding and the supplied binding using a logical or operation.
    */
-  @Nonnull
-  default BooleanBinding or(@Nonnull BooleanBinding binding) {
+  @NonNull
+  default BooleanBinding or(@NonNull BooleanBinding binding) {
     return or(this, binding);
   }
 
   /**
    * Combines the outcome of this binding and the supplied binding using a logical xor operation.
    */
-  @Nonnull
-  default BooleanBinding xor(@Nonnull BooleanBinding binding) {
+  @NonNull
+  default BooleanBinding xor(@NonNull BooleanBinding binding) {
     return xor(this, binding);
   }
 }

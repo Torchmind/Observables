@@ -24,12 +24,7 @@
   <!-- Artifact Information -->
   <groupId>com.torchmind</groupId>
   <artifactId>observables</artifactId>
-  <version>1.0.1</version>
-  <packaging>jar</packaging>
-
-  <prerequisites>
-    <maven>3.0</maven>
-  </prerequisites>
+  <version>1.1.0</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -92,11 +87,17 @@
   <dependencies>
     <!-- Utilities -->
     <dependency>
-      <groupId>com.google.code.findbugs</groupId>
-      <artifactId>jsr305</artifactId>
-      <version>3.0.1</version>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs-annotations</artifactId>
+      <version>3.1.1</version>
       <scope>provided</scope>
-      <optional>true</optional>
+
+      <exclusions>
+        <exclusion>
+          <groupId>com.google.code.findbugs</groupId>
+          <artifactId>jsr305</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <!-- Test Dependencies -->
@@ -123,12 +124,39 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.6.1</version>
+        <version>3.7.0</version>
 
         <configuration>
+          <jdkToolchain>
+            <version>9</version>
+          </jdkToolchain>
+
           <source>1.8</source>
-          <target>1.8</target>
+          <release>8</release>
         </configuration>
+
+        <executions>
+          <execution>
+            <id>default-compile</id>
+            <configuration>
+              <source>9</source>
+              <release>9</release>
+            </configuration>
+          </execution>
+          <execution>
+            <id>base-compile</id>
+
+            <goals>
+              <goal>compile</goal>
+            </goals>
+
+            <configuration>
+              <excludes>
+                <exclude>module-info.java</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -137,6 +165,7 @@
 
         <configuration>
           <configLocation>google_checks.xml</configLocation>
+          <excludes>module-info.java</excludes>
         </configuration>
 
         <executions>
@@ -155,23 +184,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
-
-        <configuration>
-          <archive>
-            <addMavenDescriptor>true</addMavenDescriptor>
-            <compress>true</compress>
-            <index>true</index>
-
-            <manifestEntries>
-              <Automatic-Module-Name>com.torchmind.observable</Automatic-Module-Name>
-            </manifestEntries>
-          </archive>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.4</version>
+        <version>3.0.0</version>
 
         <executions>
           <execution>

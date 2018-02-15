@@ -25,7 +25,7 @@ import java.util.function.BiPredicate;
 import java.util.function.BooleanSupplier;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a generic binding which may be used in order to define property values based on more
@@ -42,8 +42,8 @@ public interface Binding<V> extends ReadOnlyObservable<V> {
    * most cases, however, the static methods provided by this interface do suffice however and
    * require far less manually programmed logic.</p>
    */
-  @Nonnull
-  static <V> Binding<V> create(@Nonnull Supplier<V> supplier,
+  @NonNull
+  static <V> Binding<V> create(@NonNull Supplier<V> supplier,
       ReadOnlyObservable<?>... observables) {
     return new AbstractBinding<V>(new HashSet<>(Arrays.asList(observables))) {
       @Override
@@ -59,9 +59,9 @@ public interface Binding<V> extends ReadOnlyObservable<V> {
    * <p>Note that the provided mapping function must be null-safe as no attempts will be made to
    * strip or special case null values provided by the supplied observable.</p>
    */
-  @Nonnull
-  static <I, O> Binding<O> map(@Nonnull Function<I, O> function,
-      @Nonnull ReadOnlyObservable<I> observable) {
+  @NonNull
+  static <I, O> Binding<O> map(@NonNull Function<I, O> function,
+      @NonNull ReadOnlyObservable<I> observable) {
     return create(() -> function.apply(observable.get()), observable);
   }
 
@@ -70,10 +70,10 @@ public interface Binding<V> extends ReadOnlyObservable<V> {
    * predicate evaluates to true, the first observable value is returned, otherwise the second is
    * returned).
    */
-  @Nonnull
-  static <V> Binding<V> ternary(@Nonnull BiPredicate<V, V> predicate,
-      @Nonnull ReadOnlyObservable<? extends V> observable1,
-      @Nonnull ReadOnlyObservable<? extends V> observable2) {
+  @NonNull
+  static <V> Binding<V> ternary(@NonNull BiPredicate<V, V> predicate,
+      @NonNull ReadOnlyObservable<? extends V> observable1,
+      @NonNull ReadOnlyObservable<? extends V> observable2) {
     return create(() -> {
       V value1 = observable1.get();
       V value2 = observable2.get();
@@ -86,21 +86,21 @@ public interface Binding<V> extends ReadOnlyObservable<V> {
    * Creates a binding which is equal in functionality to the ternary operator (e.g. when the
    * supplier evaluates to true, the first value is returned, otherwise the second is returned).
    */
-  @Nonnull
-  static <V> Binding<V> ternary(@Nonnull BooleanSupplier supplier, V value1, V value2) {
+  @NonNull
+  static <V> Binding<V> ternary(@NonNull BooleanSupplier supplier, V value1, V value2) {
     return create(() -> supplier.getAsBoolean() ? value1 : value2);
   }
 
   /**
    * Converts the logic of this binding into a standard Java supplier.
    */
-  @Nonnull
+  @NonNull
   Supplier<V> asSupplier();
 
   /**
    * Retrieves a list of observables that this binding relies upon.
    */
-  @Nonnull
+  @NonNull
   Set<ReadOnlyObservable<?>> getDependencies();
 
   /**

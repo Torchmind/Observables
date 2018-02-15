@@ -1,12 +1,10 @@
+[![License](https://img.shields.io/github/license/Torchmind/Observables.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.txt)
+[![Maven Central](https://img.shields.io/maven-central/v/com.torchmind/observables.svg?style=flat-square)](https://search.maven.org/#search%7Cga%7C1%7Cg%3Acom.torchmind%20a%3Aobservables)
+[![GitHub Release](https://img.shields.io/github/release/Torchmind/Observables.svg?style=flat-square)](https://github.com/Torchmind/Observables/releases)
+[![CircleCI](https://img.shields.io/circleci/project/github/Torchmind/Observables.svg?style=flat-square)](https://circleci.com/gh/Torchmind/Observables)
+
 Observable Properties for Java
 ==============================
-
-![Latest Tag](https://img.shields.io/github/tag/Torchmind/Observables.svg?style=flat-square)
-![Maven Central](https://img.shields.io/maven-central/v/com.torchmind/observables.svg?style=flat-square)
-![License](https://img.shields.io/github/license/Torchmind/Observables.svg?style=flat-square)
-![Pull Requests](https://img.shields.io/github/issues-pr/Torchmind/Observables.svg?style=flat-square)
-![Stars](https://img.shields.io/github/stars/Torchmind/Observables.svg?style=flat-square&label=Stars)
-![Forks](https://img.shields.io/github/forks/Torchmind/Observables.svg?style=flat-square&label=Forks)
 
 Provides Observable Properties which can be listened to or even bound to one and another to Java
 environments.
@@ -24,7 +22,7 @@ via maven central as follows:
   <dependency>
     <groupId>com.torchmind</groupId>
     <artifactId>observables</artifactId>
-    <version>1.0</version>
+    <version>1.1.0</version>
   </dependency>
 </dependencies>
 <!-- ... -->

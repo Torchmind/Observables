@@ -19,7 +19,7 @@ package com.torchmind.observable.primitive;
 
 import com.torchmind.observable.ReadOnlyObservable;
 import java.util.function.BooleanSupplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a observable implementation which simplifies access to boolean values.
@@ -31,7 +31,7 @@ public interface ReadOnlyBooleanObservable extends ReadOnlyObservable<Boolean> {
   /**
    * Converts this observable into a standard Java supplier.
    */
-  @Nonnull
+  @NonNull
   default BooleanSupplier asBooleanSupplier() {
     return this::getValue;
   }

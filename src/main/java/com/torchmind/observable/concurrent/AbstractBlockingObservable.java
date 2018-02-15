@@ -25,8 +25,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import edu.umd.cs.findbugs.annotations.NonNull;
+import edu.umd.cs.findbugs.annotations.Nullable;
 
 /**
  * Provides a blocking abstract implementation of the observable specification.
@@ -145,7 +145,7 @@ public abstract class AbstractBlockingObservable<V> extends
    * {@inheritDoc}
    */
   @Override
-  public void bindTo(@Nonnull ReadOnlyObservable<? extends V> observable) {
+  public void bindTo(@NonNull ReadOnlyObservable<? extends V> observable) {
     this.lock.writeLock().lock();
 
     try {
@@ -177,7 +177,7 @@ public abstract class AbstractBlockingObservable<V> extends
    * {@inheritDoc}
    */
   @Override
-  public void bindBidirectionallyTo(@Nonnull Observable<V> observable) {
+  public void bindBidirectionallyTo(@NonNull Observable<V> observable) {
     this.lock.writeLock().lock();
 
     try {
@@ -228,7 +228,7 @@ public abstract class AbstractBlockingObservable<V> extends
    * {@inheritDoc}
    */
   @Override
-  public boolean isBoundTo(@Nonnull ReadOnlyObservable<? extends V> observable) {
+  public boolean isBoundTo(@NonNull ReadOnlyObservable<? extends V> observable) {
     this.lock.readLock().lock();
 
     try {
@@ -242,7 +242,7 @@ public abstract class AbstractBlockingObservable<V> extends
    * {@inheritDoc}
    */
   @Override
-  public boolean isBoundBidirectionallyTo(@Nonnull Observable<V> observable) {
+  public boolean isBoundBidirectionallyTo(@NonNull Observable<V> observable) {
     this.lock.readLock().lock();
 
     try {
@@ -315,7 +315,7 @@ public abstract class AbstractBlockingObservable<V> extends
    * {@inheritDoc}
    */
   @Override
-  public void unbindBidirectional(@Nonnull Observable<V> observable) {
+  public void unbindBidirectional(@NonNull Observable<V> observable) {
     this.lock.writeLock().lock();
 
     try {

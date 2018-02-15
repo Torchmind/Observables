@@ -22,7 +22,7 @@ import com.torchmind.observable.primitive.ReadOnlyCharacterObservable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.function.Supplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a base to character valued bindings.
@@ -38,8 +38,8 @@ public interface CharacterBinding extends Binding<Character>, ReadOnlyCharacterO
    * most cases, however, the static methods provided by this interface do suffice however and
    * require far less manually programmed logic.</p>
    */
-  @Nonnull
-  static CharacterBinding create(@Nonnull Supplier<Character> supplier,
+  @NonNull
+  static CharacterBinding create(@NonNull Supplier<Character> supplier,
       ReadOnlyObservable<?>... observables) {
     return new AbstractCharacterBinding(new HashSet<>(Arrays.asList(observables))) {
       @Override

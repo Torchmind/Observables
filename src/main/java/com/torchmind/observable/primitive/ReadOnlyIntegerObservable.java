@@ -18,7 +18,7 @@
 package com.torchmind.observable.primitive;
 
 import java.util.function.IntSupplier;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * Provides a observable implementation which simplifies access to integer values.
@@ -30,7 +30,7 @@ public interface ReadOnlyIntegerObservable extends ReadOnlyNumberObservable<Inte
   /**
    * Converts this observable into a standard Java supplier.
    */
-  @Nonnull
+  @NonNull
   default IntSupplier asIntSupplier() {
     return this::getValue;
   }

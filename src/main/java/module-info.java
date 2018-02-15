@@ -15,35 +15,20 @@
  * limitations under the License.
  */
 
-package com.torchmind.observable.binding;
-
-import com.torchmind.observable.ReadOnlyObservable;
-import java.util.Set;
-import edu.umd.cs.findbugs.annotations.NonNull;
-
 /**
- * Provides an abstract short binding implementation.
+ * Provides properties which may be used to observe any given change to their values or to
+ * update their values when their dependencies change.
  *
  * @author <a href="mailto:johannesd@torchmind.com">Johannes Donath</a>
  */
-abstract class AbstractShortBinding extends AbstractBinding<Short> implements ShortBinding {
+module com.torchmind.observable {
+  exports com.torchmind.observable;
+  exports com.torchmind.observable.binding;
+  exports com.torchmind.observable.concurrent;
+  exports com.torchmind.observable.concurrent.primitive;
+  exports com.torchmind.observable.listener;
+  exports com.torchmind.observable.primitive;
+  exports com.torchmind.observable.utility;
 
-  public AbstractShortBinding(
-      @NonNull Set<ReadOnlyObservable<?>> dependencies) {
-    super(dependencies);
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public short getValue() {
-    Short value = this.get();
-
-    if (value == null) {
-      return 0;
-    }
-
-    return value;
-  }
+  requires static com.github.spotbugs.annotations;
 }

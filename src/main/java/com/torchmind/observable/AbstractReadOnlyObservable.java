@@ -23,7 +23,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.WeakHashMap;
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 /**
  * <p>Provides the most basic implementation for observables.</p>
@@ -61,7 +61,7 @@ public abstract class AbstractReadOnlyObservable<V> implements ReadOnlyObservabl
    * {@inheritDoc}
    */
   @Override
-  public void registerListener(@Nonnull ChangeListener<? super V> listener) {
+  public void registerListener(@NonNull ChangeListener<? super V> listener) {
     this.listeners.add(listener);
   }
 
@@ -69,7 +69,7 @@ public abstract class AbstractReadOnlyObservable<V> implements ReadOnlyObservabl
    * {@inheritDoc}
    */
   @Override
-  public void removeListener(@Nonnull ChangeListener<? super V> listener) {
+  public void removeListener(@NonNull ChangeListener<? super V> listener) {
     this.listeners.remove(listener);
   }
 }
